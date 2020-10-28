@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="3">
+    <name>panda_ign</name>
+    <version>1.0.0</version>
+    <description>Franka Emika Panda robot compatible with Ignition and MoveIt2</description>
+    <maintainer email="orsula.andrej@gmail.com">Andrej Orsula</maintainer>
+    <author>Andrej Orsula</author>
+    <license>BSD</license>
+
+    <buildtool_depend>ament_cmake</buildtool_depend>
+
+    <export>
+        <build_type>ament_cmake</build_type>
+    </export>
+</package>
