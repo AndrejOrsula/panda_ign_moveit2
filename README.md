@@ -2,6 +2,8 @@
 
 URDF and SDF descriptions of Franka Emika Panda robot compatible with Ignition and MoveIt2.
 
+**The initial position of `panda_joint7` differs from the official [franka_description](https://github.com/frankaemika/franka_ros).** This change allows spawning of panda inside Ignition Gazebo without self-collision.
+
 ## Instructions
 
 ### ROS 2
