@@ -23,13 +23,15 @@ export IGN_GAZEBO_RESOURCE_PATH=${PARENT_DIR}/panda_ign:${IGN_GAZEBO_RESOURCE_PA
 ```bash
 panda_ign
 ├── panda               # Model directory compatible with Ignition Fuel
-    └─ meshes           # Meshes for both SDF and URDF
+    ├─ meshes           # Meshes for both SDF and URDF
         ├── collision   # STL files for collision detection
             └─ *.stl
         └── visual      # COLLADA files for visuals
             └─ *.dae
+    ├─ thumbnails       # Thumbnails for Fuel
+        └─ *.png
     ├── model.config    # Ignition model meta data
-    └── panda.sdf       # SDF description of the Ignition model
+    └── model.sdf       # SDF description of the Ignition model
 ├── urdf
     └── panda.urdf      # URDF description of the model for MoveIt2
 ├── CMakeLists.txt
