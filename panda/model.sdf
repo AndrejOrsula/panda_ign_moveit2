@@ -423,7 +423,7 @@
 
         <!-- Arm-Hand Fixed Joint -->
         <joint name="panda_hand_joint" type="fixed">
-            <pose relative_to="panda_link7">0 0 0.107 0 0 0</pose>
+            <pose relative_to="panda_link7">0 0 0.107 0 0 -0.7853981633974483</pose>
             <parent>panda_link7</parent>
             <child>panda_hand</child>
         </joint>
