@@ -21,6 +21,14 @@ Export `IGN_GAZEBO_RESOURCE_PATH` to make SDF discoverable within the context of
 export IGN_GAZEBO_RESOURCE_PATH=${PARENT_DIR}/panda_ign:${IGN_GAZEBO_RESOURCE_PATH}
 ```
 
+Alternatively, you can just include the model from [Ignition Fuel](https://app.ignitionrobotics.org/AndrejOrsula/fuel/models/panda) if you do not require the URDF description (or you use it from the official [franka_description](https://github.com/frankaemika/franka_ros)).
+
+```xml
+<include>
+    <uri>https://fuel.ignitionrobotics.org/1.0/AndrejOrsula/models/panda</uri>
+</include>
+```
+
 ## Directory Structure
 
 ```bash
