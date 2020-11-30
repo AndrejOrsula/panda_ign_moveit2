@@ -5,6 +5,8 @@ URDF and SDF descriptions of Franka Emika Panda robot compatible with Ignition a
 ![panda](panda/thumbnails/2.png)
 Collision geometry was remodelled to make it more realistic and improve performance, see [#3](https://github.com/AndrejOrsula/panda_ign/pull/3).
 
+The SDF description also contains estimated dynamic parameters, which are NOT based on real-life robot.
+
 ## Instructions
 
 ### ROS 2
