@@ -2,6 +2,9 @@
 
 URDF and SDF descriptions of Franka Emika Panda robot compatible with Ignition and MoveIt2.
 
+![panda](panda/thumbnails/2.png)
+Collision geometry was remodelled to make it more realistic and improve performance, see [#3](https://github.com/AndrejOrsula/panda_ign/pull/3).
+
 ## Instructions
 
 ### ROS 2
