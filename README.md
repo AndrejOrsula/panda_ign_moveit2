@@ -3,13 +3,15 @@
 URDF and SDF descriptions of Franka Emika Panda robot compatible with Ignition and MoveIt2.
 
 ![panda](panda/thumbnails/2.png)
-Collision geometry was remodelled to make it more realistic and improve performance, see [#3](https://github.com/AndrejOrsula/panda_ign/pull/3).
+**Collision geometry** was remodelled to make it more realistic and improve performance, see [#3](https://github.com/AndrejOrsula/panda_ign/pull/3).
 
-The SDF description also contains estimated dynamic parameters, which are NOT based on real-life robot.
+**Inertial properties** of all links are estimated with [estimate_inertial_properties.py](scripts/estimate_inertial_properties.py) script, while assuming total mass of 18 kg and uniform density.
+
+The SDF description also contains estimated **dynamic parameters**, which are however NOT based on real-life robot.
 
 ## Instructions
 
-### ROS 2
+### ROS 2 (Optional)
 
 Build with `colcon` and source the environment to make URDF discoverable for ROS 2.
 
@@ -48,7 +50,3 @@ panda_ign
 ├── CMakeLists.txt
 └── package.xml         # ROS2 panda description package `panda_ign`
 ```
-
-## Disclaimer
-
-Inertial properties of links are currently based on estimates from [mkrizmancic/franka_gazebo](https://github.com/mkrizmancic/franka_gazebo).
