@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 
-import sys
 from os import path, listdir
-
-# Note: Both `trimesh` and `pcg_gazebo` can be installed via `pip`
-import trimesh
 from pcg_gazebo.parsers.sdf import SDF, create_sdf_element
+import sys
+import trimesh
+# Note: Both `trimesh` and `pcg-gazebo` can be installed via `pip`
 
 
 def main():
@@ -57,6 +56,31 @@ def main():
         mass[link_name] = mesh.mass
         inertia[link_name] = mesh.moment_inertia
         centre_of_mass[link_name] = mesh.center_mass
+
+    # Redistribute 75% of the hand's mass to the fingers due to internal mechanical coupling
+    # This improves reliability of grasps and makes fingers less susceptible to disturbances
+    pct_mass_of_hand = 0.75
+    # Add half of hand's redistributed mass to each finger
+    # Then, update inertial proportionally to mass increase ratio
+    old_mass_finger = mass['finger']
+    mass['finger'] += (pct_mass_of_hand/2)*mass['hand']
+    inertia['finger'] *= mass['finger']/old_mass_finger
+    # Recompute centre of finger's mass to account for this redistribution
+    translation_hand_finger = [0.0, 0.0, 0.0584]
+    centre_of_mass['finger'] = [
+        old_mass_finger * centre_of_mass['finger'][0] +
+        (pct_mass_of_hand/2) *
+        mass['hand'] * (centre_of_mass['hand'][0]-translation_hand_finger[0]),
+        old_mass_finger * centre_of_mass['finger'][1] +
+        (pct_mass_of_hand/2) *
+        mass['hand'] * (centre_of_mass['hand'][1]-translation_hand_finger[1]),
+        old_mass_finger * centre_of_mass['finger'][2] +
+        (pct_mass_of_hand/2) *
+        mass['hand'] * (centre_of_mass['hand'][2]-translation_hand_finger[2]),
+    ] / mass['finger']
+    # Reduce mass and inertia of hand to 25%
+    mass['hand'] *= (1.0-pct_mass_of_hand)
+    inertia['hand'] *= (1.0-pct_mass_of_hand)
 
     # Create a new SDF with one model
     sdf = SDF()
