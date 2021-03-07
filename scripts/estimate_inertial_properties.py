@@ -1,20 +1,37 @@
 #!/usr/bin/env python3
 
-from os import path, listdir
-from pcg_gazebo.parsers.sdf import SDF, create_sdf_element
 import sys
+from os import path, listdir
+
 import trimesh
-# Note: Both `trimesh` and `pcg-gazebo` can be installed via `pip`
+from pcg_gazebo.parsers.sdf import SDF, create_sdf_element
+# Note: Both `trimesh` and `pcg_gazebo` can be installed via `pip`
+# `trimesh` is used to estimate volume and inertial properties from meshes of links
+# `pcg_gazebo` is used for its SDF parser
 
 
 def main():
 
     # Total mass taken from datasheet (given as ~18.0kg)
+    # You can also use your own estimate of total mass if you managed to weigh Panda yourself :)
     total_mass = 18.0
     if len(sys.argv) > 1:
-        # You can also use your own estimate of total mass if you managed to weigh Panda yourself :)
-        total_mass = float(sys.argv[1])
+        if float(sys.argv[1]) > 0.0:
+            total_mass = float(sys.argv[1])
+        else:
+            print("Error: Total mass of Panda (first argument) must be positive.")
+            exit(1)
     print('Estimating inertial properties for each link to add up to %f kg' % total_mass)
+
+    # Percentage of mass to redistribute from hand to fingers due to internal mechanical coupling
+    # Choose whatever feels right (default value here is guesstimated)
+    pct_mass_of_hand = 0.75
+    if len(sys.argv) > 2:
+        if float(sys.argv[2]) >= 0.0 and float(sys.argv[2]) < 1.0:
+            pct_mass_of_hand = float(sys.argv[2])
+        else:
+            print("Error: Percentage of hand's mass to redistribute (second argument) must be in range [0.0, 1.0).")
+            exit(1)
 
     # Get path to all visual meshes
     visual_mesh_dir = path.join(path.dirname(path.dirname(
@@ -57,30 +74,24 @@ def main():
         inertia[link_name] = mesh.moment_inertia
         centre_of_mass[link_name] = mesh.center_mass
 
-    # Redistribute 75% of the hand's mass to the fingers due to internal mechanical coupling
+    # Redistribute X% of the hand's mass to the fingers due to internal mechanical coupling
     # This improves reliability of grasps and makes fingers less susceptible to disturbances
-    pct_mass_of_hand = 0.75
-    # Add half of hand's redistributed mass to each finger
-    # Then, update inertial proportionally to mass increase ratio
+    print("Redistributing %f%% of hand's mass fingers" % (100*pct_mass_of_hand))
     old_mass_finger = mass['finger']
-    mass['finger'] += (pct_mass_of_hand/2)*mass['hand']
+    # Add half of hand's redistributed mass to each finger
+    finger_extra_mass = (pct_mass_of_hand/2)*mass['hand']
+    mass['finger'] += finger_extra_mass
+    # Then, update inertial proportionally to mass increase ratio
     inertia['finger'] *= mass['finger']/old_mass_finger
     # Recompute centre of finger's mass to account for this redistribution
+    # TODO: Read translation directly from SDF (currently copied and hard-coded)
     translation_hand_finger = [0.0, 0.0, 0.0584]
-    centre_of_mass['finger'] = [
-        old_mass_finger * centre_of_mass['finger'][0] +
-        (pct_mass_of_hand/2) *
-        mass['hand'] * (centre_of_mass['hand'][0]-translation_hand_finger[0]),
-        old_mass_finger * centre_of_mass['finger'][1] +
-        (pct_mass_of_hand/2) *
-        mass['hand'] * (centre_of_mass['hand'][1]-translation_hand_finger[1]),
-        old_mass_finger * centre_of_mass['finger'][2] +
-        (pct_mass_of_hand/2) *
-        mass['hand'] * (centre_of_mass['hand'][2]-translation_hand_finger[2]),
-    ] / mass['finger']
-    # Reduce mass and inertia of hand to 25%
-    mass['hand'] *= (1.0-pct_mass_of_hand)
-    inertia['hand'] *= (1.0-pct_mass_of_hand)
+    for i in range(3):
+        centre_of_mass['finger'][i] = (old_mass_finger * centre_of_mass['finger'][i] +
+                                       finger_extra_mass * (centre_of_mass['hand'][i]-translation_hand_finger[i])) / mass['finger']
+    # Reduce mass and inertia of hand to (1.0-X)% in order to account for redistribution of its mass
+    mass['hand'] *= (1.0 - pct_mass_of_hand)
+    inertia['hand'] *= (1.0 - pct_mass_of_hand)
 
     # Create a new SDF with one model
     sdf = SDF()
