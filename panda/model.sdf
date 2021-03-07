@@ -14,14 +14,14 @@
             <visual name="panda_link0_visual">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/visual/link0.dae</uri>
+                        <uri>meshes/visual/link0.dae</uri>
                     </mesh>
                 </geometry>
             </visual>
             <collision name="panda_link0_collision">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/collision/link0.stl</uri>
+                        <uri>meshes/collision/link0.stl</uri>
                     </mesh>
                 </geometry>
                 <surface>
@@ -52,14 +52,14 @@
             <visual name="panda_link1_visual">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/visual/link1.dae</uri>
+                        <uri>meshes/visual/link1.dae</uri>
                     </mesh>
                 </geometry>
             </visual>
             <collision name="panda_link1_collision">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/collision/link1.stl</uri>
+                        <uri>meshes/collision/link1.stl</uri>
                     </mesh>
                 </geometry>
                 <surface>
@@ -90,14 +90,14 @@
             <visual name="panda_link2_visual">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/visual/link2.dae</uri>
+                        <uri>meshes/visual/link2.dae</uri>
                     </mesh>
                 </geometry>
             </visual>
             <collision name="panda_link2_collision">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/collision/link2.stl</uri>
+                        <uri>meshes/collision/link2.stl</uri>
                     </mesh>
                 </geometry>
                 <surface>
@@ -128,14 +128,14 @@
             <visual name="panda_link3_visual">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/visual/link3.dae</uri>
+                        <uri>meshes/visual/link3.dae</uri>
                     </mesh>
                 </geometry>
             </visual>
             <collision name="panda_link3_collision">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/collision/link3.stl</uri>
+                        <uri>meshes/collision/link3.stl</uri>
                     </mesh>
                 </geometry>
                 <surface>
@@ -166,14 +166,14 @@
             <visual name="panda_link4_visual">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/visual/link4.dae</uri>
+                        <uri>meshes/visual/link4.dae</uri>
                     </mesh>
                 </geometry>
             </visual>
             <collision name="panda_link4_collision">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/collision/link4.stl</uri>
+                        <uri>meshes/collision/link4.stl</uri>
                     </mesh>
                 </geometry>
                 <surface>
@@ -204,14 +204,14 @@
             <visual name="panda_link5_visual">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/visual/link5.dae</uri>
+                        <uri>meshes/visual/link5.dae</uri>
                     </mesh>
                 </geometry>
             </visual>
             <collision name="panda_link5_collision">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/collision/link5.stl</uri>
+                        <uri>meshes/collision/link5.stl</uri>
                     </mesh>
                 </geometry>
                 <surface>
@@ -242,14 +242,14 @@
             <visual name="panda_link6_visual">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/visual/link6.dae</uri>
+                        <uri>meshes/visual/link6.dae</uri>
                     </mesh>
                 </geometry>
             </visual>
             <collision name="panda_link6_collision">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/collision/link6.stl</uri>
+                        <uri>meshes/collision/link6.stl</uri>
                     </mesh>
                 </geometry>
                 <surface>
@@ -280,14 +280,14 @@
             <visual name="panda_link7_visual">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/visual/link7.dae</uri>
+                        <uri>meshes/visual/link7.dae</uri>
                     </mesh>
                 </geometry>
             </visual>
             <collision name="panda_link7_collision">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/collision/link7.stl</uri>
+                        <uri>meshes/collision/link7.stl</uri>
                     </mesh>
                 </geometry>
                 <surface>
@@ -478,7 +478,7 @@
                 <pose>0 0 0 0 0 0</pose>
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/visual/hand.dae</uri>
+                        <uri>meshes/visual/hand.dae</uri>
                     </mesh>
                 </geometry>
             </visual>
@@ -486,7 +486,7 @@
                 <pose>0 0 0 0 0 0</pose>
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/collision/hand.stl</uri>
+                        <uri>meshes/collision/hand.stl</uri>
                     </mesh>
                 </geometry>
                 <surface>
@@ -517,14 +517,14 @@
             <visual name="panda_leftfinger_visual">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/visual/finger.dae</uri>
+                        <uri>meshes/visual/finger.dae</uri>
                     </mesh>
                 </geometry>
             </visual>
             <collision name="panda_leftfinger_collision">
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/collision/finger.stl</uri>
+                        <uri>meshes/collision/finger.stl</uri>
                     </mesh>
                 </geometry>
                 <surface>
@@ -556,7 +556,7 @@
                 <pose>0 0 0 0 0 3.141592653589793</pose>
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/visual/finger.dae</uri>
+                        <uri>meshes/visual/finger.dae</uri>
                     </mesh>
                 </geometry>
             </visual>
@@ -564,7 +564,7 @@
                 <pose>0 0 0 0 0 3.141592653589793</pose>
                 <geometry>
                     <mesh>
-                        <uri>model://panda/meshes/collision/finger.stl</uri>
+                        <uri>meshes/collision/finger.stl</uri>
                     </mesh>
                 </geometry>
                 <surface>
