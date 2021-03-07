@@ -5,9 +5,9 @@ URDF and SDF descriptions of Franka Emika Panda robot compatible with Ignition a
 ![panda](panda/thumbnails/2.png)
 **Collision geometry** was remodelled to make it more realistic and improve performance, see [#3](https://github.com/AndrejOrsula/panda_ign/pull/3).
 
-**Inertial properties** of all links are estimated with [estimate_inertial_properties.py](scripts/estimate_inertial_properties.py) script, while assuming total mass of 18 kg and uniform density.
+**Inertial properties** of all links are estimated with [estimate_inertial_properties.py](scripts/estimate_inertial_properties.py) script, while assuming total mass of 18 kg and uniform density. This script also redistributes a potion of hand's mass to fingers due to internal mechanical coupling.
 
-The SDF description also contains estimated **dynamic parameters**, which are however NOT based on real-life robot.
+The SDF description also contains estimated **dynamic parameters** for joints. Note that these values are NOT based on real-life robot and should therefore be used with caution.
 
 ## Instructions
 
