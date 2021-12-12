@@ -1,52 +1,66 @@
-# panda_ign
+# panda_ign_moveit2
 
-URDF and SDF descriptions of Franka Emika Panda robot compatible with Ignition and MoveIt2.
+This package contains configuration for Franka Emika Panda that enables its manipulation with MoveIt 2 inside Ignition Gazebo. For control, [ign_ros2_control](https://github.com/ignitionrobotics/ign_ros2_control) is used.
 
-![panda](panda/thumbnails/2.png)
-**Collision geometry** was remodelled to make it more realistic and improve performance, see [#3](https://github.com/AndrejOrsula/panda_ign/pull/3).
+## Overview
 
-**Inertial properties** of all links are estimated with [estimate_inertial_properties.py](scripts/estimate_inertial_properties.py) script, while assuming total mass of 18 kg and uniform density. This script also redistributes a potion of hand's mass to fingers due to internal mechanical coupling.
+Below is an overview of the included packages, with a small description of their purpose. For more information, please see README.md of each individual package.
 
-The SDF description also contains estimated **dynamic parameters** for joints. Note that these values are NOT based on real-life robot and should therefore be used with caution.
+- [**panda_description**](./panda_description) – URDF and SDF description of the robot
+- [**panda_moveit_config**](./panda_moveit_config) – MoveIt 2 configuration for the robot
 
 ## Instructions
 
-### ROS 2 (Optional)
+### Requirements
 
-Build with `colcon` and source the environment to make URDF discoverable for ROS 2.
+- **OS:** Ubuntu 20.04 (Focal)
+  - Other distributions might work, but they were not tested.
 
-### Ignition
+### Dependencies
 
-Export `IGN_GAZEBO_RESOURCE_PATH` to make SDF discoverable within the context of Ignition Gazebo.
+These are the primary dependencies required to use this project.
+
+- ROS 2 [Rolling](https://docs.ros.org/en/rolling/Installation.html)
+  - [Galactic](https://docs.ros.org/en/galactic/Installation.html) should also work without any issues (not tested)
+- Ignition [Fortress](https://ignitionrobotics.org/docs/fortress)
+  - [Citadel](https://ignitionrobotics.org/docs/citadel) and [Edifice](https://ignitionrobotics.org/docs/edifice) should also work (not tested)
+- [MoveIt 2](https://moveit.ros.org/install-moveit2/binary)
+  - Install/build a version based on the selected ROS 2 release
+
+Furthermore, the following packages are required.
+
+- [ros_ign](https://github.com/ignitionrobotics/ros_ign/tree/ros2)
+  - Install/build a version based on the selected combination of ROS 2 release and Ignition version
+- [ign_ros2_control](https://github.com/ignitionrobotics/ign_ros2_control)
+  - Build a version based on the selected combination of ROS 2 release and Ignition version
+
+https://github.com/ignitionrobotics/ign_ros2_control
+
+### Building
+
+Clone this repository and import VCS dependencies. Then install dependencies and build with [colcon](https://colcon.readthedocs.io).
 
 ```bash
-export IGN_GAZEBO_RESOURCE_PATH=${PARENT_DIR}/panda_ign:${IGN_GAZEBO_RESOURCE_PATH}
+# Create workspace for the project (can be skippid)
+mkdir -p panda_ws/src && cd panda_ws
+# Clone this repository
+git clone https://github.com/AndrejOrsula/panda_ign.git src/panda_ign
+# Install external dependencies via rosdep
+rosdep install -r --from-paths src --ignore-src --rosdistro ${ROS_DISTRO}
+# Build with colcon
+colcon build --merge-install --symlink-install --cmake-args "-DCMAKE_BUILD_TYPE=Release"
 ```
 
-Alternatively, you can just include the model from [Ignition Fuel](https://app.ignitionrobotics.org/AndrejOrsula/fuel/models/panda) if you do not require the URDF description (or you use it from the official [franka_description](https://github.com/frankaemika/franka_ros)).
+### Sourcing
 
-```xml
-<include>
-    <uri>https://fuel.ignitionrobotics.org/1.0/AndrejOrsula/models/panda</uri>
-</include>
-```
-
-## Directory Structure
+Before utilising this package, remember to source the ROS 2 workspace overlay.
 
 ```bash
-panda_ign
-├── panda               # Model directory compatible with Ignition Fuel
-    ├─ meshes           # Meshes for both SDF and URDF
-        ├── collision   # STL files for collision detection
-            └─ *.stl
-        └── visual      # COLLADA files for visuals
-            └─ *.dae
-    ├─ thumbnails       # Thumbnails for Fuel
-        └─ *.png
-    ├── model.config    # Ignition model meta data
-    └── model.sdf       # SDF description of the Ignition model
-├── urdf
-    └── panda.urdf      # URDF description of the model for MoveIt2
-├── CMakeLists.txt
-└── package.xml         # ROS2 panda description package `panda_ign`
+source panda_ws/install/local_setup.bash
 ```
+
+This enables:
+
+- Execution of scripts and examples via `ros2 run panda_* <executable>`
+- Launching of setup scripts via `ros2 launch panda_* <launch_script>`
+- Discoverability of shared resources
