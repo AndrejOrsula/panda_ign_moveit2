@@ -26,8 +26,8 @@
   <xacro:property name="joint_finger1_upper_limit" value="0.04"/>
   <xacro:property name="joint_finger1_velocity_limit" value="0.2"/>
   <xacro:property name="joint_finger1_torque_limit" value="20"/>
-  <xacro:property name="joint_finger1_damping" value="10.0"/>
-  <xacro:property name="joint_finger1_friction" value="0.5"/>
+  <xacro:property name="joint_finger1_damping" value="0.5"/>
+  <xacro:property name="joint_finger1_friction" value="0.002"/>
   <xacro:property name="link_finger1_name" value="leftfinger"/>
   <xacro:property name="link_finger1_mu" value="1.13"/>
   <xacro:property name="link_finger1_mesh_offset" value="0 0 0"/>
@@ -41,8 +41,8 @@
   <xacro:property name="joint_finger2_upper_limit" value="0.04"/>
   <xacro:property name="joint_finger2_velocity_limit" value="0.2"/>
   <xacro:property name="joint_finger2_torque_limit" value="20"/>
-  <xacro:property name="joint_finger2_damping" value="10.0"/>
-  <xacro:property name="joint_finger2_friction" value="0.5"/>
+  <xacro:property name="joint_finger2_damping" value="0.5"/>
+  <xacro:property name="joint_finger2_friction" value="0.002"/>
   <xacro:property name="link_finger2_name" value="rightfinger"/>
   <xacro:property name="link_finger2_mu" value="1.13"/>
   <xacro:property name="link_finger2_mesh_offset" value="0 0 ${pi}"/>
@@ -126,7 +126,6 @@
     joint_damping="${joint_finger2_damping}"
     joint_friction="${joint_finger2_friction}"
     gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
-    mimic_joint="${prefix}${joint_finger1_name}"
     />
     <xacro:panda_link
     link_name="${prefix}${link_finger2_name}"

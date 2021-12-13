@@ -38,13 +38,13 @@ https://github.com/ignitionrobotics/ign_ros2_control
 
 ### Building
 
-Clone this repository and import VCS dependencies. Then install dependencies and build with [colcon](https://colcon.readthedocs.io).
+Clone this repository. Then install dependencies and build with [colcon](https://colcon.readthedocs.io).
 
 ```bash
 # Create workspace for the project (can be skippid)
 mkdir -p panda_ws/src && cd panda_ws
 # Clone this repository
-git clone https://github.com/AndrejOrsula/panda_ign.git src/panda_ign
+git clone https://github.com/AndrejOrsula/panda_ign_moveit2.git src/panda_ign_moveit2
 # Install external dependencies via rosdep
 rosdep install -r --from-paths src --ignore-src --rosdistro ${ROS_DISTRO}
 # Build with colcon

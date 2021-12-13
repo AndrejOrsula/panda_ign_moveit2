@@ -352,53 +352,53 @@
   </joint>
   <ros2_control name="panda_arm_system" type="system">
     <hardware>
-      <plugin>fake_components/GenericSystem</plugin>
+      <plugin>ignition_ros2_control/IgnitionSystem</plugin>
     </hardware>
     <joint name="panda_joint1">
       <param name="initial_position">0.0</param>
-      <command_interface name="position"/>
+      <command_interface name="effort"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
     <joint name="panda_joint2">
-      <param name="initial_position">-0.785</param>
-      <command_interface name="position"/>
+      <param name="initial_position">-0.7853981633974483</param>
+      <command_interface name="effort"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
     <joint name="panda_joint3">
       <param name="initial_position">0.0</param>
-      <command_interface name="position"/>
+      <command_interface name="effort"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
     <joint name="panda_joint4">
-      <param name="initial_position">-2.356</param>
-      <command_interface name="position"/>
+      <param name="initial_position">-2.356194490192345</param>
+      <command_interface name="effort"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
     <joint name="panda_joint5">
       <param name="initial_position">0.0</param>
-      <command_interface name="position"/>
+      <command_interface name="effort"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
     <joint name="panda_joint6">
-      <param name="initial_position">1.571</param>
-      <command_interface name="position"/>
+      <param name="initial_position">1.5707963267948966</param>
+      <command_interface name="effort"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
     <joint name="panda_joint7">
-      <param name="initial_position">0.785</param>
-      <command_interface name="position"/>
+      <param name="initial_position">0.7853981633974483</param>
+      <command_interface name="effort"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
@@ -438,7 +438,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.0584"/>
     <axis xyz="0 1 0"/>
     <limit effort="20" lower="0" upper="0.04" velocity="0.2"/>
-    <dynamics damping="10.0" friction="0.5"/>
+    <dynamics damping="0.5" friction="0.002"/>
   </joint>
   <transmission name="panda_finger_joint1_transmission">
     <type>transmission_interface/SimpleTransmission</type>
@@ -482,8 +482,7 @@
     <origin rpy="0 0 0" xyz="0 0 0.0584"/>
     <axis xyz="0 -1 0"/>
     <limit effort="20" lower="0" upper="0.04" velocity="0.2"/>
-    <dynamics damping="10.0" friction="0.5"/>
-    <mimic joint="panda_finger_joint1"/>
+    <dynamics damping="0.5" friction="0.002"/>
   </joint>
   <transmission name="panda_finger_joint2_transmission">
     <type>transmission_interface/SimpleTransmission</type>
@@ -530,23 +529,26 @@
   </joint>
   <ros2_control name="panda_gripper_system" type="system">
     <hardware>
-      <plugin>fake_components/GenericSystem</plugin>
+      <plugin>ignition_ros2_control/IgnitionSystem</plugin>
     </hardware>
     <joint name="panda_finger_joint1">
       <param name="initial_position">0.0</param>
-      <command_interface name="position"/>
+      <command_interface name="effort"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
     <joint name="panda_finger_joint2">
       <param name="initial_position">0.0</param>
-      <param name="mimic">panda_finger_joint1</param>
-      <param name="multiplier">1</param>
-      <command_interface name="position"/>
+      <command_interface name="effort"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
   </ros2_control>
+  <gazebo>
+    <plugin filename="ignition_ros2_control-system" name="ignition_ros2_control::IgnitionROS2ControlPlugin">
+      <parameters>/home/andrej/ws/code/repos/panda_ign_moveit2/install/share/panda_moveit_config/config/controllers_effort.yaml</parameters>
+    </plugin>
+  </gazebo>
 </robot>

@@ -39,9 +39,9 @@
   <!-- Flag to enable ros2 controllers for manipulator -->
   <xacro:arg name="ros2_control" default="true"/>
   <!-- The ros2_control plugin that should be loaded for the manipulator ('fake', 'ignition', 'real' or custom) -->
-  <xacro:arg name="ros2_control_plugin" default="fake"/>
+  <xacro:arg name="ros2_control_plugin" default="ignition"/>
   <!-- The output control command interface provided by ros2_control ('position', 'velocity', 'effort' or certain combinations 'position,velocity') -->
-  <xacro:arg name="ros2_control_command_interface" default="position"/>
+  <xacro:arg name="ros2_control_command_interface" default="effort"/>
   <!-- The filepath to parameters of ROS 2 controllers -->
   <xacro:arg name="ros2_controller_parameters" default="$(find panda_moveit_config)/config/controllers_$(arg ros2_control_command_interface).yaml"/>
 
@@ -54,7 +54,7 @@
   <!--            -->
   <!-- Prefixes -->
   <xacro:property name="prefix_arm" value="$(arg prefix)"/>
-  <xacro:property name="prefix_hand" value="$(arg prefix)"/>
+  <xacro:property name="prefix_gripper" value="$(arg prefix)"/>
 
   <!-- Origin of arm in the world -->
   <xacro:property name="world_name" value="world"/>
@@ -96,7 +96,7 @@
   <xacro:if value="$(arg gripper)">
     <xacro:panda_gripper
       wrist_flange="${prefix_arm}${wrist_flange_name}"
-      prefix="${prefix_hand}"
+      prefix="${prefix_gripper}"
       origin_xyz="${gripper_offset_xyz}"
       origin_rpy="${gripper_offset_rpy}"
       collision="$(arg collision_gripper)"

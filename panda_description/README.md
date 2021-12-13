@@ -1,6 +1,6 @@
 # panda_description
 
-URDF and SDF description of Summit XL-GEN (LunaLab variant).
+URDF and SDF description of Franka Emika Panda.
 
 <p align="center" float="middle">
   <img width="100.0%" src="panda/thumbnails/2.png" alt="Visualisation of panda"/>
@@ -34,7 +34,7 @@ ros2 launch panda_description view_ign.launch.py
 
 #### Ignition Fuel
 
-If you do not require URDF and other resources from this repository, the default model can also be included directly from [Ignition Fuel](https://app.ignitionrobotics.org/AndrejOrsula/fuel/models/panda) if you do not require the URDF description.
+If you do not require URDF and other resources from this repository, the default model (without `ros2_control`) can also be included directly from [Ignition Fuel](https://app.ignitionrobotics.org/AndrejOrsula/fuel/models/panda) if you do not require the URDF description.
 
 ```xml
 <include>

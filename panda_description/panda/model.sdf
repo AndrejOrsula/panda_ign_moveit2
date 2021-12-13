@@ -595,8 +595,8 @@
           <velocity>0.2</velocity>
         </limit>
         <dynamics>
-          <damping>10</damping>
-          <friction>0.5</friction>
+          <damping>0.5</damping>
+          <friction>0.002</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -667,8 +667,8 @@
           <velocity>0.2</velocity>
         </limit>
         <dynamics>
-          <damping>10</damping>
-          <friction>0.5</friction>
+          <damping>0.5</damping>
+          <friction>0.002</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -726,5 +726,9 @@
         </geometry>
       </visual>
     </link>
+    <static>false</static>
+    <plugin name='ignition_ros2_control::IgnitionROS2ControlPlugin' filename='ignition_ros2_control-system'>
+      <parameters>/home/andrej/ws/code/repos/panda_ign_moveit2/install/share/panda_moveit_config/config/controllers_effort.yaml</parameters>
+    </plugin>
   </model>
 </sdf>
