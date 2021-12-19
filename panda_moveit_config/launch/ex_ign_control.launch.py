@@ -53,7 +53,7 @@ def generate_launch_description() -> LaunchDescription:
             ),
             launch_arguments=[
                 ("ros2_control_plugin", "ignition"),
-                ("ros2_control_command_interface", "position"),
+                ("ros2_control_command_interface", "effort"),
                 ("collision_arm", "false"),
                 ("rviz_config", rviz_config),
                 ("use_sim_time", use_sim_time),
