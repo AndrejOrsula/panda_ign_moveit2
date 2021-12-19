@@ -4,7 +4,7 @@
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
-from launch.conditions import IfCondition, UnlessCondition
+from launch.conditions import IfCondition
 from launch.substitutions import (
     Command,
     FindExecutable,
@@ -37,15 +37,13 @@ def generate_launch_description():
     safety_position_margin = LaunchConfiguration("safety_position_margin")
     safety_k_position = LaunchConfiguration("safety_k_position")
     safety_k_velocity = LaunchConfiguration("safety_k_velocity")
-    publish_state = LaunchConfiguration("publish_state")
-    execute_trajectories = LaunchConfiguration("execute_trajectories")
     ros2_control = LaunchConfiguration("ros2_control")
     ros2_control_plugin = LaunchConfiguration("ros2_control_plugin")
     ros2_control_command_interface = LaunchConfiguration(
         "ros2_control_command_interface"
     )
-    servo = LaunchConfiguration("servo")
     gazebo_preserve_fixed_joint = LaunchConfiguration("gazebo_preserve_fixed_joint")
+    enable_servo = LaunchConfiguration("enable_servo")
     enable_rviz = LaunchConfiguration("enable_rviz")
     rviz_config = LaunchConfiguration("rviz_config")
     use_sim_time = LaunchConfiguration("use_sim_time")
@@ -182,12 +180,11 @@ def generate_launch_description():
 
     # Trajectory execution
     trajectory_execution = {
-        "allow_trajectory_execution": execute_trajectories,
+        "allow_trajectory_execution": True,
         "moveit_manage_controllers": False,
         "trajectory_execution.allowed_execution_duration_scaling": 1.2,
         "trajectory_execution.allowed_goal_duration_margin": 0.5,
-        # TODO: Reduce allowed_start_tolerance once PID controllers are tuned
-        "trajectory_execution.allowed_start_tolerance": 0.31416,
+        "trajectory_execution.allowed_start_tolerance": 0.01,
     }
 
     # Controller parameters
@@ -221,7 +218,6 @@ def generate_launch_description():
                     "use_sim_time": use_sim_time,
                 },
             ],
-            condition=IfCondition(publish_state),
         ),
         # ros2_control_node (only for fake controller)
         Node(
@@ -243,10 +239,6 @@ def generate_launch_description():
                             "'",
                             " == ",
                             "'fake'",
-                            " and ",
-                            "'",
-                            execute_trajectories,
-                            "'",
                         ]
                     )
                 )
@@ -269,25 +261,6 @@ def generate_launch_description():
                 moveit_controller_manager,
                 {"use_sim_time": use_sim_time},
             ],
-            condition=IfCondition(execute_trajectories),
-        ),
-        # move_group (without execution)
-        Node(
-            package="moveit_ros_move_group",
-            executable="move_group",
-            output="log",
-            arguments=["--ros-args", "--log-level", log_level],
-            parameters=[
-                robot_description,
-                robot_description_semantic,
-                kinematics,
-                joint_limits,
-                planning_pipeline,
-                trajectory_execution,
-                planning_scene_monitor_parameters,
-                {"use_sim_time": use_sim_time},
-            ],
-            condition=UnlessCondition(execute_trajectories),
         ),
         # move_servo
         Node(
@@ -306,7 +279,7 @@ def generate_launch_description():
                 servo_params,
                 {"use_sim_time": use_sim_time},
             ],
-            condition=IfCondition(servo),
+            condition=IfCondition(enable_servo),
         ),
         # rviz2
         Node(
@@ -344,7 +317,6 @@ def generate_launch_description():
                 output="log",
                 arguments=[controller, "--ros-args", "--log-level", log_level],
                 parameters=[{"use_sim_time": use_sim_time}],
-                condition=IfCondition(execute_trajectories),
             ),
         )
 
@@ -418,18 +390,6 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
             default_value="true",
             description="Flag to enable collision geometry for manipulator's gripper (hand and fingers).",
         ),
-        # State publishing
-        DeclareLaunchArgument(
-            "publish_state",
-            default_value="true",
-            description="Flag to enable robot state publisher.",
-        ),
-        # Execution
-        DeclareLaunchArgument(
-            "execute_trajectories",
-            default_value="true",
-            description="Flag to enable execution of trajectories for MoveIt 2.",
-        ),
         # Safety controller
         DeclareLaunchArgument(
             "safety_limits",
@@ -467,17 +427,17 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
             default_value="effort",
             description="The output control command interface provided by ros2_control ('position', 'velocity', 'effort' or certain combinations 'position,velocity').",
         ),
-        # Servo
-        DeclareLaunchArgument(
-            "servo",
-            default_value="true",
-            description="Flag to enable MoveIt2 Servo for manipulator.",
-        ),
         # Gazebo
         DeclareLaunchArgument(
             "gazebo_preserve_fixed_joint",
             default_value="false",
             description="Flag to preserve fixed joints and prevent lumping when generating SDF for Gazebo.",
+        ),
+        # Servo
+        DeclareLaunchArgument(
+            "enable_servo",
+            default_value="true",
+            description="Flag to enable MoveIt2 Servo for manipulator.",
         ),
         # Miscellaneous
         DeclareLaunchArgument(
