@@ -28,39 +28,39 @@ joint_trajectory_controller:
       - velocity
     gains:
       panda_joint1:
-        p: 3000.0
-        d: 15.0
-        i: 160.0
+        p: 4000.0
+        d: 10.0
+        i: 250.0
         i_clamp: 15.0
       panda_joint2:
-        p: 9500.0
-        d: 47.5
-        i: 525.0
-        i_clamp: 47.5
+        p: 10000.0
+        d: 25.0
+        i: 600.0
+        i_clamp: 45.0
       panda_joint3:
-        p: 6500.0
-        d: 32.5
-        i: 355.0
-        i_clamp: 32.5
+        p: 8000.0
+        d: 20.0
+        i: 450.0
+        i_clamp: 30.0
       panda_joint4:
         p: 6000.0
-        d: 30.0
-        i: 330.0
+        d: 15.0
+        i: 300.0
         i_clamp: 30.0
       panda_joint5:
-        p: 27500.0
-        d: 2.75
-        i: 155.0
-        i_clamp: 6.88
+        p: 3000.0
+        d: 5.0
+        i: 175.0
+        i_clamp: 7.0
       panda_joint6:
         p: 2500.0
-        d: 2.5
-        i: 135.0
-        i_clamp: 6.25
+        d: 3.0
+        i: 150.0
+        i_clamp: 6.0
       panda_joint7:
         p: 2000.0
         d: 2.0
-        i: 110.0
+        i: 10.0
         i_clamp: 5.0
 
 gripper_trajectory_controller:
@@ -75,12 +75,12 @@ gripper_trajectory_controller:
       - velocity
     gains:
       panda_finger_joint1:
-        p: 500.0
-        d: 0.0005
-        i: 0.0
-        i_clamp: 10.0
+        p: 225.0
+        d: 0.001
+        i: 0.4
+        i_clamp: 4.0
       panda_finger_joint2:
-        p: 500.0
-        d: 0.0005
-        i: 0.0
-        i_clamp: 10.0
+        p: 225.0
+        d: 0.001
+        i: 0.4
+        i_clamp: 4.0
