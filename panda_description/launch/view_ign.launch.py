@@ -4,9 +4,15 @@
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+from launch.substitutions import (
+    Command,
+    FindExecutable,
+    LaunchConfiguration,
+    PathJoinSubstitution,
+)
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+from os import path
 from typing import List
 
 
@@ -16,11 +22,28 @@ def generate_launch_description() -> LaunchDescription:
     declared_arguments = generate_declared_arguments()
 
     # Get substitution for all arguments
+    description_package = LaunchConfiguration("description_package")
+    description_filepath = LaunchConfiguration("description_filepath")
     world = LaunchConfiguration("world")
     model = LaunchConfiguration("model")
     use_sim_time = LaunchConfiguration("use_sim_time")
     ign_verbosity = LaunchConfiguration("ign_verbosity")
     log_level = LaunchConfiguration("log_level")
+
+    # URDF
+    _robot_description_xml = Command(
+        [
+            PathJoinSubstitution([FindExecutable(name="xacro")]),
+            " ",
+            PathJoinSubstitution(
+                [FindPackageShare(description_package), description_filepath]
+            ),
+            " ",
+            "name:=",
+            model,
+        ]
+    )
+    robot_description = {"robot_description": _robot_description_xml}
 
     # List of included launch descriptions
     launch_descriptions = [
@@ -41,6 +64,21 @@ def generate_launch_description() -> LaunchDescription:
 
     # List of nodes to be launched
     nodes = [
+        # robot_state_publisher
+        Node(
+            package="robot_state_publisher",
+            executable="robot_state_publisher",
+            output="log",
+            arguments=["--ros-args", "--log-level", log_level],
+            parameters=[
+                robot_description,
+                {
+                    "publish_frequency": 50.0,
+                    "frame_prefix": "",
+                    "use_sim_time": use_sim_time,
+                },
+            ],
+        ),
         # ros_ign_gazebo_create
         Node(
             package="ros_ign_gazebo",
@@ -60,6 +98,17 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
     """
 
     return [
+        # Locations of robot resources
+        DeclareLaunchArgument(
+            "description_package",
+            default_value="panda_description",
+            description="Custom package with robot description.",
+        ),
+        DeclareLaunchArgument(
+            "description_filepath",
+            default_value=path.join("urdf", "panda.urdf.xacro"),
+            description="Path to xacro or URDF description of the robot, relative to share of `description_package`.",
+        ),
         # World and model for Ignition Gazebo
         DeclareLaunchArgument(
             "world",
