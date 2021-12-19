@@ -190,7 +190,7 @@ def generate_launch_description():
     # Controller parameters
     declared_arguments.append(
         DeclareLaunchArgument(
-            "__controller_parameters__basename",
+            "__controller_parameters_basename",
             default_value=["controllers_", ros2_control_command_interface, ".yaml"],
         )
     )
@@ -198,7 +198,7 @@ def generate_launch_description():
         [
             FindPackageShare(moveit_config_package),
             "config",
-            LaunchConfiguration("__controller_parameters__basename"),
+            LaunchConfiguration("__controller_parameters_basename"),
         ]
     )
 
