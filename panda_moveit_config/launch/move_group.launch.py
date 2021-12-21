@@ -1,7 +1,14 @@
 #!/usr/bin/env -S ros2 launch
 """Configure and setup move group for planning with MoveIt 2"""
 
+from os import path
+from typing import List
+
+import yaml
 from ament_index_python.packages import get_package_share_directory
+from launch_ros.actions import Node
+from launch_ros.substitutions import FindPackageShare
+
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.conditions import IfCondition
@@ -12,11 +19,6 @@ from launch.substitutions import (
     PathJoinSubstitution,
     PythonExpression,
 )
-from launch_ros.actions import Node
-from launch_ros.substitutions import FindPackageShare
-from os import path
-from typing import List
-import yaml
 
 
 def generate_launch_description():

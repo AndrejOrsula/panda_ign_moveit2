@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
-from os import path, listdir
+from os import listdir, path
 
 import trimesh
 from pcg_gazebo.parsers.sdf import SDF, create_sdf_element
