@@ -34,8 +34,6 @@ Furthermore, the following packages are required.
 - [ign_ros2_control](https://github.com/ignitionrobotics/ign_ros2_control)
   - Build a version based on the selected combination of ROS 2 release and Ignition version
 
-https://github.com/ignitionrobotics/ign_ros2_control
-
 ### Building
 
 Clone this repository. Then install dependencies and build with [colcon](https://colcon.readthedocs.io).
