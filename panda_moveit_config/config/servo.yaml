@@ -25,11 +25,11 @@ low_pass_filter_coeff: 1.05
 
 ## MoveIt properties
 move_group_name: arm # Often 'manipulator' or 'arm'
-planning_frame: panda_link_0 # The MoveIt planning frame. Often 'base_link' or 'world'
+planning_frame: panda_link0 # The MoveIt planning frame. Often 'base_link' or 'world'
 
 ## Other frames
-ee_frame_name: panda_link_0 # The name of the end effector link, used to return the EE pose
-robot_link_command_frame: panda_hand_tcp # commands must be given in the frame of a robot link. Usually either the base or end effector
+ee_frame_name: panda_hand_tcp # The name of the end effector link, used to return the EE pose
+robot_link_command_frame: panda_link0 # commands must be given in the frame of a robot link. Usually either the base or end effector
 
 ## Stopping behaviour
 incoming_command_timeout: 0.25 # Stop servoing if X seconds elapse without a new command
