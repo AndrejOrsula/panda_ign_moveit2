@@ -34,6 +34,10 @@ Furthermore, the following packages are required.
 - [ign_ros2_control](https://github.com/ignitionrobotics/ign_ros2_control)
   - Build a version based on the selected combination of ROS 2 release and Ignition version
 
+Until [ros2_controllers#225](https://github.com/ros-controls/ros2_controllers/pull/225) is merged and released, `ros2_controllers` must be built from source in order to enable the use of effort command interface inside Ignition Gazebo.
+
+- [AndrejOrsula/ros2_controllers:jtc_effort](https://github.com/AndrejOrsula/ros2_controllers/tree/jtc_effort) was tested and can be used for this purpose.
+
 ### Building
 
 Clone this repository. Then install dependencies and build with [colcon](https://colcon.readthedocs.io).
