@@ -36,7 +36,7 @@ Furthermore, the following packages are required.
 
 Until [ros2_controllers#225](https://github.com/ros-controls/ros2_controllers/pull/225) is merged and released, `ros2_controllers` must be built from source in order to enable the use of effort command interface inside Ignition Gazebo.
 
-- [AndrejOrsula/ros2_controllers:jtc_effort](https://github.com/AndrejOrsula/ros2_controllers/tree/jtc_effort) was tested and can be used for this purpose.
+- [AndrejOrsula/ros2_controllers:jtc_effort](https://github.com/AndrejOrsula/ros2_controllers/tree/jtc_effort) was tested and can be used for this purpose
 
 ### Building
 

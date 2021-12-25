@@ -42,10 +42,6 @@ If you do not require URDF and other resources from this repository, the default
 </include>
 ```
 
-## Disclaimer
-
-URDF xacros are originally based on [frankaemika/franka_ros](https://github.com/frankaemika/franka_ros/tree/develop/franka_description). These files were modified to fit the purpose of this repository.
-
 ## Directory Structure
 
 The following directory structure is utilised for this package because it provides compatibility with Ignition Gazebo, including [Ignition Fuel](https://app.ignitionrobotics.org).
@@ -77,3 +73,7 @@ The following directory structure is utilised for this package because it provid
 ├── CMakeLists.txt                      # Colcon-enabled CMake recipe
 └── package.xml                         # ROS 2 package metadata
 ```
+
+## Disclaimer
+
+URDF xacros are originally based on [frankaemika/franka_ros](https://github.com/frankaemika/franka_ros/tree/develop/franka_description). These files were modified to fit the purpose of this repository.
