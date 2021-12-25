@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!-- Macro for SRDF of Franka Emika Panda arm -->
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <!--       -->
+  <!-- Macro -->
+  <!--       -->
+  <xacro:macro name="panda_arm" params="
+    prefix:=panda_
+  ">
+    <group name="arm">
+      <chain base_link="${prefix}link0" tip_link="${prefix}hand_tcp"/>
+    </group>
+
+    <group_state group="arm" name="ready">
+      <joint name="${prefix}joint1" value="0"/>
+      <joint name="${prefix}joint2" value="${-pi/4}"/>
+      <joint name="${prefix}joint3" value="0"/>
+      <joint name="${prefix}joint4" value="${-135*pi/180}"/>
+      <joint name="${prefix}joint5" value="0"/>
+      <joint name="${prefix}joint6" value="${pi/2}"/>
+      <joint name="${prefix}joint7" value="${pi/4}"/>
+    </group_state>
+    <group_state group="arm" name="extended">
+      <joint name="${prefix}joint1" value="0"/>
+      <joint name="${prefix}joint2" value="0"/>
+      <joint name="${prefix}joint3" value="0"/>
+      <joint name="${prefix}joint4" value="0"/>
+      <joint name="${prefix}joint5" value="0"/>
+      <joint name="${prefix}joint6" value="${pi/2}"/>
+      <joint name="${prefix}joint7" value="${pi/4}"/>
+    </group_state>
+    <group_state group="arm" name="transport">
+      <joint name="${prefix}joint1" value="0"/>
+      <joint name="${prefix}joint2" value="${-32.08*pi/180}"/>
+      <joint name="${prefix}joint3" value="0"/>
+      <joint name="${prefix}joint4" value="${-170.17*pi/180}"/>
+      <joint name="${prefix}joint5" value="0"/>
+      <joint name="${prefix}joint6" value="0"/>
+      <joint name="${prefix}joint7" value="${pi/4}"/>
+    </group_state>
+
+    <disable_collisions link1="${prefix}link0" link2="${prefix}link1" reason="Adjacent"/>
+    <disable_collisions link1="${prefix}link0" link2="${prefix}link2" reason="Never"/>
+    <disable_collisions link1="${prefix}link0" link2="${prefix}link3" reason="Never"/>
+    <disable_collisions link1="${prefix}link0" link2="${prefix}link4" reason="Never"/>
+    <disable_collisions link1="${prefix}link1" link2="${prefix}link2" reason="Adjacent"/>
+    <disable_collisions link1="${prefix}link1" link2="${prefix}link3" reason="Never"/>
+    <disable_collisions link1="${prefix}link1" link2="${prefix}link4" reason="Never"/>
+    <disable_collisions link1="${prefix}link2" link2="${prefix}link3" reason="Adjacent"/>
+    <disable_collisions link1="${prefix}link2" link2="${prefix}link4" reason="Never"/>
+    <disable_collisions link1="${prefix}link2" link2="${prefix}link6" reason="Never"/>
+    <disable_collisions link1="${prefix}link3" link2="${prefix}link4" reason="Adjacent"/>
+    <disable_collisions link1="${prefix}link3" link2="${prefix}link5" reason="Never"/>
+    <disable_collisions link1="${prefix}link3" link2="${prefix}link6" reason="Never"/>
+    <disable_collisions link1="${prefix}link3" link2="${prefix}link7" reason="Never"/>
+    <disable_collisions link1="${prefix}link4" link2="${prefix}link5" reason="Adjacent"/>
+    <disable_collisions link1="${prefix}link4" link2="${prefix}link6" reason="Never"/>
+    <disable_collisions link1="${prefix}link4" link2="${prefix}link7" reason="Never"/>
+    <disable_collisions link1="${prefix}link5" link2="${prefix}link6" reason="Adjacent"/>
+    <disable_collisions link1="${prefix}link6" link2="${prefix}link7" reason="Adjacent"/>
+  </xacro:macro>
+
+</robot>

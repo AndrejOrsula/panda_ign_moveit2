@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!-- Macro for SRDF of Franka Emika Panda gripper -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!--       -->
+  <!-- Macro -->
+  <!--       -->
+  <xacro:macro name="panda_gripper" params="
+    prefix:=panda_
+  ">
+    <group name="gripper">
+      <link name="${prefix}hand"/>
+      <link name="${prefix}leftfinger"/>
+      <link name="${prefix}rightfinger"/>
+      <joint name="${prefix}finger_joint1"/>
+      <joint name="${prefix}finger_joint2"/>
+    </group>
+
+    <group_state name="open" group="gripper">
+      <joint name="${prefix}finger_joint1" value="0.04"/>
+      <joint name="${prefix}finger_joint2" value="0.04"/>
+    </group_state>
+    <group_state name="close" group="gripper">
+      <joint name="${prefix}finger_joint1" value="0.0"/>
+      <joint name="${prefix}finger_joint2" value="0.0"/>
+    </group_state>
+
+    <disable_collisions link1="${prefix}hand" link2="${prefix}leftfinger" reason="Adjacent"/>
+    <disable_collisions link1="${prefix}hand" link2="${prefix}rightfinger" reason="Adjacent"/>
+    <disable_collisions link1="${prefix}leftfinger" link2="${prefix}rightfinger" reason="Default"/>
+  </xacro:macro>
+
+</robot>

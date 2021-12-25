@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!-- SRDF for Franka Emika Panda -->
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="$(arg name)">
+
+  <!--                   -->
+  <!-- Imported elements -->
+  <!--                   -->
+  <xacro:include filename="$(find panda_moveit_config)/srdf/panda_arm.xacro"/>
+  <xacro:include filename="$(find panda_moveit_config)/srdf/panda_gripper.xacro"/>
+
+
+  <!--            -->
+  <!-- Parameters -->
+  <!--            -->
+  <!-- Name of the robot (mandatory) -->
+  <xacro:arg name="name" default="panda"/>
+  <!-- Prefix for all entities -->
+  <xacro:arg name="prefix" default="$(arg name)_"/>
+
+
+  <!--            -->
+  <!-- Properties -->
+  <!--            -->
+  <!-- Prefixes -->
+  <xacro:property name="prefix_arm" value="$(arg prefix)"/>
+  <xacro:property name="prefix_gripper" value="$(arg prefix)"/>
+
+
+  <!--       -->
+  <!-- Robot -->
+  <!--       -->
+  <xacro:panda_arm
+    prefix="${prefix_arm}"
+  />
+  <xacro:panda_gripper
+    prefix="${prefix_gripper}"
+  />
+
+  <end_effector group="gripper" name="gripper" parent_group="arm" parent_link="${prefix_arm}hand_tcp"/>
+
+  <disable_collisions link1="${prefix_gripper}hand" link2="${prefix_arm}link3" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}hand" link2="${prefix_arm}link4" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}hand" link2="${prefix_arm}link6" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}hand" link2="${prefix_arm}link7" reason="Adjacent"/>
+  <disable_collisions link1="${prefix_gripper}leftfinger" link2="${prefix_arm}link3" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}leftfinger" link2="${prefix_arm}link4" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}leftfinger" link2="${prefix_arm}link6" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}leftfinger" link2="${prefix_arm}link7" reason="Never"/>
+  <disable_collisions link1="${prefix_arm}link3" link2="${prefix_gripper}rightfinger" reason="Never"/>
+  <disable_collisions link1="${prefix_arm}link4" link2="${prefix_gripper}rightfinger" reason="Never"/>
+  <disable_collisions link1="${prefix_arm}link6" link2="${prefix_gripper}rightfinger" reason="Never"/>
+  <disable_collisions link1="${prefix_arm}link7" link2="${prefix_gripper}rightfinger" reason="Never"/>
+
+</robot>

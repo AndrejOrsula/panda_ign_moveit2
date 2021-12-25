@@ -1,0 +1,86 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 250
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    gripper_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - panda_joint1
+      - panda_joint2
+      - panda_joint3
+      - panda_joint4
+      - panda_joint5
+      - panda_joint6
+      - panda_joint7
+    command_interfaces:
+      - effort
+    state_interfaces:
+      - position
+      - velocity
+    gains:
+      panda_joint1:
+        p: 4000.0
+        d: 10.0
+        i: 250.0
+        i_clamp: 15.0
+      panda_joint2:
+        p: 10000.0
+        d: 25.0
+        i: 600.0
+        i_clamp: 45.0
+      panda_joint3:
+        p: 8000.0
+        d: 20.0
+        i: 450.0
+        i_clamp: 30.0
+      panda_joint4:
+        p: 6000.0
+        d: 15.0
+        i: 300.0
+        i_clamp: 30.0
+      panda_joint5:
+        p: 3000.0
+        d: 5.0
+        i: 175.0
+        i_clamp: 7.0
+      panda_joint6:
+        p: 2500.0
+        d: 3.0
+        i: 150.0
+        i_clamp: 6.0
+      panda_joint7:
+        p: 2000.0
+        d: 2.0
+        i: 10.0
+        i_clamp: 5.0
+
+gripper_trajectory_controller:
+  ros__parameters:
+    joints:
+      - panda_finger_joint1
+      - panda_finger_joint2
+    command_interfaces:
+      - effort
+    state_interfaces:
+      - position
+      - velocity
+    gains:
+      panda_finger_joint1:
+        p: 225.0
+        d: 0.001
+        i: 0.4
+        i_clamp: 4.0
+      panda_finger_joint2:
+        p: 225.0
+        d: 0.001
+        i: 0.4
+        i_clamp: 4.0
