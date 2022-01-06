@@ -727,7 +727,7 @@
       </visual>
     </link>
     <static>false</static>
-    <plugin name='ignition_ros2_control::IgnitionROS2ControlPlugin' filename='ignition_ros2_control-system'>
+    <plugin name='ign_ros2_control::IgnitionROS2ControlPlugin' filename='ign_ros2_control-system'>
       <parameters>/home/andrej/ws/code/repos/panda_ign_moveit2/install/share/panda_moveit_config/config/controllers_effort.yaml</parameters>
     </plugin>
   </model>

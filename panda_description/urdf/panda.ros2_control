@@ -25,13 +25,13 @@
         <xacro:if value="${plugin == 'fake'}">
           <plugin>fake_components/GenericSystem</plugin>
         </xacro:if>
-        <xacro:if value="${plugin == 'ignition'}">
-          <plugin>ignition_ros2_control/IgnitionSystem</plugin>
+        <xacro:if value="${plugin == 'ign'}">
+          <plugin>ign_ros2_control/IgnitionSystem</plugin>
         </xacro:if>
         <xacro:if value="${plugin == 'real'}">
           <xacro:ERROR_ros2_control_for_real_robot_unimplemented/>
         </xacro:if>
-        <xacro:unless value="${plugin == 'fake' or plugin == 'ignition' or plugin == 'real'}">
+        <xacro:unless value="${plugin == 'fake' or plugin == 'ign' or plugin == 'real'}">
           <plugin>${plugin}</plugin>
         </xacro:unless>
       </hardware>
@@ -162,13 +162,13 @@
         <xacro:if value="${plugin == 'fake'}">
           <plugin>fake_components/GenericSystem</plugin>
         </xacro:if>
-        <xacro:if value="${plugin == 'ignition'}">
-          <plugin>ignition_ros2_control/IgnitionSystem</plugin>
+        <xacro:if value="${plugin == 'ign'}">
+          <plugin>ign_ros2_control/IgnitionSystem</plugin>
         </xacro:if>
         <xacro:if value="${plugin == 'real'}">
           <xacro:ERROR_ros2_control_for_real_robot_unimplemented/>
         </xacro:if>
-        <xacro:unless value="${plugin == 'fake' or plugin == 'ignition' or plugin == 'real'}">
+        <xacro:unless value="${plugin == 'fake' or plugin == 'ign' or plugin == 'real'}">
           <plugin>${plugin}</plugin>
         </xacro:unless>
       </hardware>

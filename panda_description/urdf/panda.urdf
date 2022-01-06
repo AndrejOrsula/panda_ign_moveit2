@@ -352,7 +352,7 @@
   </joint>
   <ros2_control name="panda_arm_system" type="system">
     <hardware>
-      <plugin>ignition_ros2_control/IgnitionSystem</plugin>
+      <plugin>ign_ros2_control/IgnitionSystem</plugin>
     </hardware>
     <joint name="panda_joint1">
       <param name="initial_position">0.0</param>
@@ -529,7 +529,7 @@
   </joint>
   <ros2_control name="panda_gripper_system" type="system">
     <hardware>
-      <plugin>ignition_ros2_control/IgnitionSystem</plugin>
+      <plugin>ign_ros2_control/IgnitionSystem</plugin>
     </hardware>
     <joint name="panda_finger_joint1">
       <param name="initial_position">0.0</param>
@@ -547,7 +547,7 @@
     </joint>
   </ros2_control>
   <gazebo>
-    <plugin filename="ignition_ros2_control-system" name="ignition_ros2_control::IgnitionROS2ControlPlugin">
+    <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
       <parameters>/home/andrej/ws/code/repos/panda_ign_moveit2/install/share/panda_moveit_config/config/controllers_effort.yaml</parameters>
     </plugin>
   </gazebo>
