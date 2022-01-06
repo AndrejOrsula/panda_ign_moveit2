@@ -5,11 +5,11 @@
   <!--       -->
   <!-- Macro -->
   <!--       -->
-  <xacro:macro name="ignition_ros2_control" params="
+  <xacro:macro name="ign_ros2_control" params="
    controller_parameters
   ">
     <gazebo>
-      <plugin filename="ignition_ros2_control-system" name="ignition_ros2_control::IgnitionROS2ControlPlugin">
+      <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
         <parameters>${controller_parameters}</parameters>
       </plugin>
     </gazebo>
