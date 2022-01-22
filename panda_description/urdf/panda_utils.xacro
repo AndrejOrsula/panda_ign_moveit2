@@ -159,7 +159,7 @@
     gazebo_preserve_fixed_joint:=false
   ">
     <xacro:panda_dummy_link
-      name="${link_name}"
+      link_name="${link_name}"
       gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
     />
 
@@ -175,10 +175,10 @@
   <!-- Macro -->
   <!--       -->
   <xacro:macro name="panda_dummy_link" params="
-    name
+    link_name
     gazebo_preserve_fixed_joint:=false
   ">
-    <link name="${name}">
+    <link name="${link_name}">
       <xacro:if value="${gazebo_preserve_fixed_joint}">
         <inertial>
           <mass value="1e-5"/>

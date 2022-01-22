@@ -71,7 +71,7 @@
   <!--       -->
   <!-- Dummy world link that the robot is fixed to -->
   <xacro:panda_dummy_link
-    name="${world_name}"
+    link_name="${world_name}"
     gazebo_preserve_fixed_joint="$(arg gazebo_preserve_fixed_joint)"
   />
 
