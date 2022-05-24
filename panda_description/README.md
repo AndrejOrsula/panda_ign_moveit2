@@ -20,11 +20,7 @@ ros2 launch panda_description view.launch.py
 
 ### SDF
 
-For SDF, please use the included [xacro2sdf.bash](./scripts/xacro2sdf.bash) script with the desired arguments. This script makes sure that a correct relative path is used to locate all assets. In order to make the model discoverable within the context of Ignition Gazebo, please extend the `IGN_GAZEBO_RESOURCE_PATH` environment variable.
-
-```bash
-export IGN_GAZEBO_RESOURCE_PATH=${REPO_DIR}/panda_description${IGN_GAZEBO_RESOURCE_PATH:+:${IGN_GAZEBO_RESOURCE_PATH}}
-```
+For SDF, please use the included [xacro2sdf.bash](./scripts/xacro2sdf.bash) script with the desired arguments. This script makes sure that a correct relative path is used to locate all assets.
 
 To visualise SDF with Ignition Gazebo, included [view_ign.launch.py](./launch/view_ign.launch.py) script can be used.
 
