@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>panda_moveit_config</name>
-  <version>1.0.0</version>
+  <version>3.0.0</version>
   <description>MoveIt configuration for Franka Emika Panda</description>
   <maintainer email="orsula.andrej@gmail.com">Andrej Orsula</maintainer>
   <author>Andrej Orsula</author>
