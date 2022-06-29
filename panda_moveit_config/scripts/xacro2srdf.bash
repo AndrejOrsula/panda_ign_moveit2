@@ -16,6 +16,3 @@ rm "${SRDF_PATH}" 2>/dev/null
 # Process xacro into SRDF
 xacro "${XACRO_PATH}" "${XACRO_ARGS[@]}" -o "${SRDF_PATH}" &&
 echo "Created new ${SRDF_PATH}"
-
-# Add to stating area
-git add "${SRDF_PATH}"

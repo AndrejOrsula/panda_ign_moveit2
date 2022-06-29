@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>panda</name>
+  <version>1.0.0</version>
+  <description>Metapackage for Franka Emika Panda</description>
+  <maintainer email="andrejorsula@uni.lu">Andrej Orsula</maintainer>
+  <author>Andrej Orsula</author>
+  <license>BSD</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <build_depend>panda_description</build_depend>
+  <build_depend>panda_moveit_config</build_depend>
+  <build_depend>xacro</build_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

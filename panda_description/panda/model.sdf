@@ -9,14 +9,14 @@
       <pose relative_to='panda_joint_base'>0 0 0 0 0 0</pose>
       <inertial>
         <pose>-0.025566 -2.87883e-05 0.057332 0 0 0</pose>
-        <mass>2.814271300104062</mass>
+        <mass>2.8142713001040618</mass>
         <inertia>
-          <ixx>0.007539063636481469</ixx>
+          <ixx>0.0075390636364814686</ixx>
           <ixy>-1.505312457478333e-05</ixy>
-          <ixz>-0.001214432883573897</ixz>
+          <ixz>-0.0012144328835738971</ixz>
           <iyy>0.01050801742738296</iyy>
           <iyz>1.043480350103298e-05</iyz>
-          <izz>0.009864933638708275</izz>
+          <izz>0.0098649336387082748</izz>
         </inertia>
       </inertial>
       <collision name='panda_link0_collision'>
@@ -33,8 +33,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.85</mu>
-              <mu2>0.85</mu2>
+              <mu>0.84999999999999998</mu>
+              <mu2>0.84999999999999998</mu2>
             </ode>
           </friction>
         </surface>
@@ -56,8 +56,8 @@
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-2.897246558310587</lower>
-          <upper>2.897246558310587</upper>
+          <lower>-2.8972465583105871</lower>
+          <upper>2.8972465583105871</upper>
           <effort>87</effort>
           <velocity>2.617993877991494</velocity>
         </limit>
@@ -71,8 +71,8 @@
       <physics>
         <ode>
           <limit>
-            <cfm>0.0</cfm>
-            <erp>0.2</erp>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
           </limit>
         </ode>
       </physics>
@@ -81,14 +81,14 @@
       <pose relative_to='panda_joint1'>0 0 0 0 0 0</pose>
       <inertial>
         <pose>-3.72212e-09 -0.0324958 -0.0675818 0 0 0</pose>
-        <mass>2.643317042722721</mass>
+        <mass>2.6433170427227211</mass>
         <inertia>
-          <ixx>0.01740507698287972</ixx>
-          <ixy>-8.687986369621078e-09</ixy>
+          <ixx>0.017405076982879721</ixx>
+          <ixy>-8.6879863696210777e-09</ixy>
           <ixz>-1.627781906292042e-08</ixz>
           <iyy>0.01535207793578173</iyy>
-          <iyz>0.004510855959102245</iyz>
-          <izz>0.005987891663073857</izz>
+          <iyz>0.0045108559591022449</iyz>
+          <izz>0.0059878916630738566</izz>
         </inertia>
       </inertial>
       <collision name='panda_link1_collision'>
@@ -105,8 +105,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.85</mu>
-              <mu2>0.85</mu2>
+              <mu>0.84999999999999998</mu>
+              <mu2>0.84999999999999998</mu2>
             </ode>
           </friction>
         </surface>
@@ -128,8 +128,8 @@
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-1.762782544514273</lower>
-          <upper>1.762782544514273</upper>
+          <lower>-1.7627825445142731</lower>
+          <upper>1.7627825445142731</upper>
           <effort>87</effort>
           <velocity>2.617993877991494</velocity>
         </limit>
@@ -143,8 +143,8 @@
       <physics>
         <ode>
           <limit>
-            <cfm>0.0</cfm>
-            <erp>0.2</erp>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
           </limit>
         </ode>
       </physics>
@@ -153,14 +153,14 @@
       <pose relative_to='panda_joint2'>0 0 0 0 0 0</pose>
       <inertial>
         <pose>3.17833e-07 -0.06861 0.0322285 0 0 0</pose>
-        <mass>2.665275533166119</mass>
+        <mass>2.6652755331661191</mass>
         <inertia>
-          <ixx>0.01778694005635383</ixx>
-          <ixy>8.70635625879119e-08</ixy>
-          <ixz>3.752072058394008e-08</ixz>
-          <iyy>0.006044133867952844</iyy>
-          <iyz>-0.004599490295490376</iyz>
-          <izz>0.01571095500455695</izz>
+          <ixx>0.017786940056353829</ixx>
+          <ixy>8.7063562587911901e-08</ixy>
+          <ixz>3.7520720583940079e-08</ixz>
+          <iyy>0.0060441338679528443</iyy>
+          <iyz>-0.0045994902954903756</iyz>
+          <izz>0.015710955004556951</izz>
         </inertia>
       </inertial>
       <collision name='panda_link2_collision'>
@@ -177,8 +177,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.85</mu>
-              <mu2>0.85</mu2>
+              <mu>0.84999999999999998</mu>
+              <mu2>0.84999999999999998</mu2>
             </ode>
           </friction>
         </surface>
@@ -200,8 +200,8 @@
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-2.897246558310587</lower>
-          <upper>2.897246558310587</upper>
+          <lower>-2.8972465583105871</lower>
+          <upper>2.8972465583105871</upper>
           <effort>87</effort>
           <velocity>2.617993877991494</velocity>
         </limit>
@@ -215,8 +215,8 @@
       <physics>
         <ode>
           <limit>
-            <cfm>0.0</cfm>
-            <erp>0.2</erp>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
           </limit>
         </ode>
       </physics>
@@ -225,14 +225,14 @@
       <pose relative_to='panda_joint3'>0 0 0 0 0 0</pose>
       <inertial>
         <pose>0.0469893 0.0316374 -0.031704 0 0 0</pose>
-        <mass>2.329371482904573</mass>
+        <mass>2.3293714829045729</mass>
         <inertia>
-          <ixx>0.007549676416113977</ixx>
+          <ixx>0.0075496764161139774</ixx>
           <ixy>-0.002432046451349223</ixy>
           <ixz>-0.003250815048103007</ixz>
-          <iyy>0.009680676080191398</iyy>
-          <iyz>-0.002131628242173069</iyz>
-          <izz>0.007944557422008086</izz>
+          <iyy>0.0096806760801913978</iyy>
+          <iyz>-0.0021316282421730689</iyz>
+          <izz>0.0079445574220080861</izz>
         </inertia>
       </inertial>
       <collision name='panda_link3_collision'>
@@ -249,8 +249,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.85</mu>
-              <mu2>0.85</mu2>
+              <mu>0.84999999999999998</mu>
+              <mu2>0.84999999999999998</mu2>
             </ode>
           </friction>
         </surface>
@@ -272,8 +272,8 @@
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-3.07177948351002</lower>
-          <upper>-0.06981317007977318</upper>
+          <lower>-3.0717794835100198</lower>
+          <upper>-0.069813170079773182</upper>
           <effort>87</effort>
           <velocity>2.617993877991494</velocity>
         </limit>
@@ -287,8 +287,8 @@
       <physics>
         <ode>
           <limit>
-            <cfm>0.0</cfm>
-            <erp>0.2</erp>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
           </limit>
         </ode>
       </physics>
@@ -297,14 +297,14 @@
       <pose relative_to='panda_joint4'>0 0 0 0 0 0</pose>
       <inertial>
         <pose>-0.0360505 0.0337069 0.0319019 0 0 0</pose>
-        <mass>2.310476364628151</mass>
+        <mass>2.3104763646281512</mass>
         <inertia>
-          <ixx>0.007764568814864828</ixx>
-          <ixy>0.003371475204045935</ixy>
-          <ixz>-0.002343621113168248</ixz>
-          <iyy>0.008015776929980149</iyy>
+          <ixx>0.0077645688148648279</ixx>
+          <ixy>0.0033714752040459352</ixy>
+          <ixz>-0.0023436211131682479</ixz>
+          <iyy>0.0080157769299801489</iyy>
           <iyz>0.002291752616147062</iyz>
-          <izz>0.009955882308071066</izz>
+          <izz>0.0099558823080710662</izz>
         </inertia>
       </inertial>
       <collision name='panda_link4_collision'>
@@ -321,8 +321,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.85</mu>
-              <mu2>0.85</mu2>
+              <mu>0.84999999999999998</mu>
+              <mu2>0.84999999999999998</mu2>
             </ode>
           </friction>
         </surface>
@@ -344,14 +344,14 @@
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-2.897246558310587</lower>
-          <upper>2.897246558310587</upper>
+          <lower>-2.8972465583105871</lower>
+          <upper>2.8972465583105871</upper>
           <effort>12</effort>
-          <velocity>3.141592653589793</velocity>
+          <velocity>3.1415926535897931</velocity>
         </limit>
         <dynamics>
           <damping>3</damping>
-          <friction>0.48</friction>
+          <friction>0.47999999999999998</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -359,8 +359,8 @@
       <physics>
         <ode>
           <limit>
-            <cfm>0.0</cfm>
-            <erp>0.2</erp>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
           </limit>
         </ode>
       </physics>
@@ -371,12 +371,12 @@
         <pose>-6.12525e-06 0.0610427 -0.104176 0 0 0</pose>
         <mass>2.6226426154892</mass>
         <inertia>
-          <ixx>0.02907053801439938</ixx>
-          <ixy>6.208738268725568e-07</ixy>
+          <ixx>0.029070538014399381</ixx>
+          <ixy>6.2087382687255679e-07</ixy>
           <ixz>-1.005915192502339e-05</ixz>
-          <iyy>0.02763852998652879</iyy>
-          <iyz>-0.007424306477850814</iyz>
-          <izz>0.004251111234400737</izz>
+          <iyy>0.027638529986528791</iyy>
+          <iyz>-0.0074243064778508139</iyz>
+          <izz>0.0042511112344007368</izz>
         </inertia>
       </inertial>
       <collision name='panda_link5_collision'>
@@ -393,8 +393,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.85</mu>
-              <mu2>0.85</mu2>
+              <mu>0.84999999999999998</mu>
+              <mu2>0.84999999999999998</mu2>
             </ode>
           </friction>
         </surface>
@@ -416,14 +416,14 @@
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-0.0174532925199433</lower>
-          <upper>3.752457891787808</upper>
+          <lower>-0.017453292519943299</lower>
+          <upper>3.7524578917878082</upper>
           <effort>12</effort>
-          <velocity>3.141592653589793</velocity>
+          <velocity>3.1415926535897931</velocity>
         </limit>
         <dynamics>
           <damping>3</damping>
-          <friction>0.48</friction>
+          <friction>0.47999999999999998</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -431,8 +431,8 @@
       <physics>
         <ode>
           <limit>
-            <cfm>0.0</cfm>
-            <erp>0.2</erp>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
           </limit>
         </ode>
       </physics>
@@ -444,11 +444,11 @@
         <mass>1.502580488662679</mass>
         <inertia>
           <ixx>0.002940555801469018</ixx>
-          <ixy>-0.0004239110835138151</ixy>
-          <ixz>0.000610007735338717</ixz>
-          <iyy>0.00392105201248677</iyy>
-          <iyz>0.0001264754543083621</iyz>
-          <izz>0.005411560387096019</izz>
+          <ixy>-0.00042391108351381513</ixy>
+          <ixz>0.00061000773533871698</ixz>
+          <iyy>0.0039210520124867698</iyy>
+          <iyz>0.00012647545430836209</iyz>
+          <izz>0.0054115603870960186</izz>
         </inertia>
       </inertial>
       <collision name='panda_link6_collision'>
@@ -465,8 +465,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.85</mu>
-              <mu2>0.85</mu2>
+              <mu>0.84999999999999998</mu>
+              <mu2>0.84999999999999998</mu2>
             </ode>
           </friction>
         </surface>
@@ -488,14 +488,14 @@
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-2.897246558310587</lower>
-          <upper>2.897246558310587</upper>
+          <lower>-2.8972465583105871</lower>
+          <upper>2.8972465583105871</upper>
           <effort>12</effort>
-          <velocity>3.141592653589793</velocity>
+          <velocity>3.1415926535897931</velocity>
         </limit>
         <dynamics>
           <damping>3</damping>
-          <friction>0.48</friction>
+          <friction>0.47999999999999998</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -503,8 +503,8 @@
       <physics>
         <ode>
           <limit>
-            <cfm>0.0</cfm>
-            <erp>0.2</erp>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
           </limit>
         </ode>
       </physics>
@@ -513,12 +513,12 @@
       <pose relative_to='panda_joint7'>0 0 0 0 0 0</pose>
       <inertial>
         <pose>0.008875033507903096 0.008740671088339662 0.07976070333019224 0 0 0</pose>
-        <mass>0.6643744647586106</mass>
+        <mass>0.66437446475861062</mass>
         <inertia>
           <ixx>0.001715624246641117</ixx>
-          <ixy>-0.0003591138381652032</ixy>
+          <ixy>-0.00035911383816520319</ixy>
           <ixz>0.0001149799088050231</ixz>
-          <iyy>0.001715148499357106</iyy>
+          <iyy>0.0017151484993571059</iyy>
           <iyz>-1.563921204261271e-05</iyz>
           <izz>0.001211247721448517</izz>
         </inertia>
@@ -537,8 +537,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.85</mu>
-              <mu2>0.85</mu2>
+              <mu>0.84999999999999998</mu>
+              <mu2>0.84999999999999998</mu2>
             </ode>
           </friction>
         </surface>
@@ -557,8 +557,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.85</mu>
-              <mu2>0.85</mu2>
+              <mu>0.84999999999999998</mu>
+              <mu2>0.84999999999999998</mu2>
             </ode>
           </friction>
         </surface>
@@ -590,13 +590,13 @@
         <xyz>0 1 0</xyz>
         <limit>
           <lower>0</lower>
-          <upper>0.04</upper>
+          <upper>0.040000000000000001</upper>
           <effort>20</effort>
-          <velocity>0.2</velocity>
+          <velocity>0.20000000000000001</velocity>
         </limit>
         <dynamics>
           <damping>3</damping>
-          <friction>0.4</friction>
+          <friction>0.40000000000000002</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -604,8 +604,8 @@
       <physics>
         <ode>
           <limit>
-            <cfm>0.0</cfm>
-            <erp>0.2</erp>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
           </limit>
         </ode>
       </physics>
@@ -616,10 +616,10 @@
         <pose>-6.2561e-06 0.00227781 -0.0277116 0 0 0</pose>
         <mass>0.2238453537819424</mass>
         <inertia>
-          <ixx>6.74804167363695e-05</ixx>
-          <ixy>-4.102744364602568e-09</ixy>
-          <ixz>1.869367397015299e-08</ixz>
-          <iyy>6.627189221641395e-05</iyy>
+          <ixx>6.7480416736369505e-05</ixx>
+          <ixy>-4.1027443646025684e-09</ixy>
+          <ixz>1.8693673970152991e-08</ixz>
+          <iyy>6.6271892216413953e-05</iyy>
           <iyz>1.19675484743908e-05</iyz>
           <izz>1.550396267804825e-05</izz>
         </inertia>
@@ -638,8 +638,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>1.13</mu>
-              <mu2>1.13</mu2>
+              <mu>1.1299999999999999</mu>
+              <mu2>1.1299999999999999</mu2>
             </ode>
           </friction>
         </surface>
@@ -662,13 +662,13 @@
         <xyz>0 -1 0</xyz>
         <limit>
           <lower>0</lower>
-          <upper>0.04</upper>
+          <upper>0.040000000000000001</upper>
           <effort>20</effort>
-          <velocity>0.2</velocity>
+          <velocity>0.20000000000000001</velocity>
         </limit>
         <dynamics>
           <damping>3</damping>
-          <friction>0.4</friction>
+          <friction>0.40000000000000002</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -676,8 +676,8 @@
       <physics>
         <ode>
           <limit>
-            <cfm>0.0</cfm>
-            <erp>0.2</erp>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
           </limit>
         </ode>
       </physics>
@@ -688,10 +688,10 @@
         <pose>-6.2561e-06 0.00227781 -0.0277116 0 0 3.141592653589793</pose>
         <mass>0.2238453537819424</mass>
         <inertia>
-          <ixx>6.74804167363695e-05</ixx>
-          <ixy>-4.102744364602568e-09</ixy>
-          <ixz>1.869367397015299e-08</ixz>
-          <iyy>6.627189221641395e-05</iyy>
+          <ixx>6.7480416736369505e-05</ixx>
+          <ixy>-4.1027443646025684e-09</ixy>
+          <ixz>1.8693673970152991e-08</ixz>
+          <iyy>6.6271892216413953e-05</iyy>
           <iyz>1.19675484743908e-05</iyz>
           <izz>1.550396267804825e-05</izz>
         </inertia>
@@ -710,8 +710,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>1.13</mu>
-              <mu2>1.13</mu2>
+              <mu>1.1299999999999999</mu>
+              <mu2>1.1299999999999999</mu2>
             </ode>
           </friction>
         </surface>

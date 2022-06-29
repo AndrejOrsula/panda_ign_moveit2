@@ -23,6 +23,3 @@ rm "${URDF_PATH}" 2>/dev/null
 # Process xacro into URDF
 xacro "${XACRO_PATH}" "${XACRO_ARGS[@]}" -o "${URDF_PATH}" &&
 echo "Created new ${URDF_PATH}"
-
-# Add to stating area
-git add "${URDF_PATH}"
