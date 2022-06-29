@@ -20,36 +20,23 @@ Below is an overview of the included packages, with a small description of their
 
 These are the primary dependencies required to use this project.
 
-- ROS 2 [Rolling](https://docs.ros.org/en/rolling/Installation.html)
-  - [Galactic](https://docs.ros.org/en/galactic/Installation.html) should also work without any issues (not tested)
-- Ignition [Fortress](https://ignitionrobotics.org/docs/fortress)
-  - [Citadel](https://ignitionrobotics.org/docs/citadel) and [Edifice](https://ignitionrobotics.org/docs/edifice) should also work (not tested)
-- [MoveIt 2](https://moveit.ros.org/install-moveit2/binary)
-  - Install/build a version based on the selected ROS 2 release
+- ROS 2 [Galactic](https://docs.ros.org/en/galactic/Installation.html)
+- Gazebo [Fortress](https://gazebosim.org/docs/fortress)
 
-Furthermore, the following packages are required.
-
-- [ros_ign](https://github.com/ignitionrobotics/ros_ign/tree/ros2)
-  - Install/build a version based on the selected combination of ROS 2 release and Ignition version
-- [ign_ros2_control](https://github.com/ignitionrobotics/ign_ros2_control)
-  - Build a version based on the selected combination of ROS 2 release and Ignition version
-
-Until [ros2_controllers#225](https://github.com/ros-controls/ros2_controllers/pull/225) is merged and released, `ros2_controllers` must be built from source in order to enable the use of effort command interface inside Ignition Gazebo.
-
-- [AndrejOrsula/ros2_controllers:jtc_effort](https://github.com/AndrejOrsula/ros2_controllers/tree/jtc_effort) was tested and can be used for this purpose
+All additional dependencies are either pulled via [vcstool](https://wiki.ros.org/vcstool) ([panda_ign_moveit2.repos](./panda_ign_moveit2.repos)) or installed via [rosdep](https://wiki.ros.org/rosdep) during the building process below.
 
 ### Building
 
-Clone this repository. Then install dependencies and build with [colcon](https://colcon.readthedocs.io).
+Clone this repository, import dependencies, install dependencies and build with [colcon](https://colcon.readthedocs.io).
 
 ```bash
-# Create workspace for the project (can be skippid)
-mkdir -p panda_ws/src && cd panda_ws
-# Clone this repository
-git clone https://github.com/AndrejOrsula/panda_ign_moveit2.git src/panda_ign_moveit2
-# Install external dependencies via rosdep
+# Clone this repository into your favourite ROS 2 workspace
+git clone https://github.com/AndrejOrsula/panda_ign_moveit2.git
+# Import dependencies
+vcs import < panda_ign_moveit2/panda_ign_moveit2.repos
+# Install dependencies
 rosdep install -r --from-paths src --ignore-src --rosdistro ${ROS_DISTRO}
-# Build with colcon
+# Build
 colcon build --merge-install --symlink-install --cmake-args "-DCMAKE_BUILD_TYPE=Release"
 ```
 
