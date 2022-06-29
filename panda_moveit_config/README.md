@@ -30,7 +30,7 @@ ros2 launch panda_moveit_config ex_fake_control.launch.py
 
 ### ign_control
 
-Example of using Franka Emika Panda inside Ignition Gazebo is provided by [ex_ign_control.launch.py](./launch/ex_ign_control.launch.py) script that allows planning motions with MoveIt 2 inside Gazebo via RViz2.
+For example inside Gazebo, try using [ex_ign_control.launch.py](./launch/ex_ign_control.launch.py) script that allows planning motions with MoveIt 2 and executing them with simulated controllers.
 
 ```bash
 ros2 launch panda_moveit_config ex_ign_control.launch.py
@@ -62,7 +62,3 @@ The following directory structure is utilised for this package.
 ├── CMakeLists.txt                     # Colcon-enabled CMake recipe
 └── package.xml                        # ROS 2 package metadata
 ```
-
-## Disclaimer
-
-Certain configuration files are originally based on [ros-planning/moveit_resources](https://github.com/ros-planning/moveit_resources/tree/ros2/panda_moveit_config). These files were modified to fit the purpose of this repository.
