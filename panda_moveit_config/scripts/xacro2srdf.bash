@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This script converts xacro (SRDF variant) into SRDF for `panda_description` package
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" &>/dev/null && pwd)"
 XACRO_PATH="$(dirname "${SCRIPT_DIR}")/srdf/panda.srdf.xacro"
 SRDF_PATH="$(dirname "${SCRIPT_DIR}")/srdf/panda.srdf"
 

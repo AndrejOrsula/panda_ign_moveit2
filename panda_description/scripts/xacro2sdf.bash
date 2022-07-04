@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This script converts xacro (URDF variant) into SDF for `panda_description` package
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" &>/dev/null && pwd)"
 XACRO_PATH="$(dirname "${SCRIPT_DIR}")/urdf/panda.urdf.xacro"
 SDF_PATH="$(dirname "${SCRIPT_DIR}")/panda/model.sdf"
 TMP_URDF_PATH="/tmp/panda_tmp.urdf"

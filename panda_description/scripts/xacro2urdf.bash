@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This script converts xacro (URDF variant) into URDF for `panda_description` package
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" &>/dev/null && pwd)"
 XACRO_PATH="$(dirname "${SCRIPT_DIR}")/urdf/panda.urdf.xacro"
 URDF_PATH="$(dirname "${SCRIPT_DIR}")/urdf/panda.urdf"
 
