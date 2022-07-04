@@ -15,7 +15,7 @@
    name:=panda_arm_system
    prefix:=panda_
    plugin:=fake
-   command_interface:=position
+   command_interface:=effort
    initial_positions_file:=${default_initial_positions_file}
   ">
     <xacro:property name="initial_positions" value="${load_yaml(initial_positions_file)['initial_joint_positions']['panda_arm']}"/>
@@ -151,7 +151,7 @@
    name:=panda_gripper_system
    prefix:=panda_
    plugin:=fake
-   command_interface:=position
+   command_interface:=effort
    initial_positions_file:=${default_initial_positions_file}
    mimic_joints:=false
   ">
