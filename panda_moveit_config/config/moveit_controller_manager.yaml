@@ -41,4 +41,4 @@ gripper_trajectory_controller:
 #   ros__parameters:
 #     joint: panda_finger_joint1
 #
-# Node: Remember to enable mimicing of finger joints before attempting to use gripper action
+# Node: Remember to enable mimicking of finger joints before attempting to use gripper action
