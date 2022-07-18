@@ -2,7 +2,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 
 ci:
-  skip: [convert_xacros]
+  skip: [convert_xacros, hadolint-docker]
 
 exclude: \.(dae|stl|png)$
 repos:
@@ -51,6 +51,12 @@ repos:
     rev: v2.1.0
     hooks:
       - id: codespell
+
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.10.0
+    hooks:
+      - id: hadolint-docker
+        args: [--ignore, DL3008]
 
   - repo: local
     hooks:
