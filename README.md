@@ -2,7 +2,7 @@
 
 Software packages for Franka Emika Panda that enable manipulation with MoveIt 2 inside ~~Ignition~~ Gazebo. For control, [gz_ros2_control](https://github.com/ros-controls/gz_ros2_control) is used.
 
-<p align="center" float="middle">
+<p align="left" float="middle">
   <img width="50.0%" src="https://user-images.githubusercontent.com/22929099/147374612-3d0209d3-574e-4a4f-8077-edbbcf8fc47d.gif" alt="Animation of ex_follow_target"/>
 </p>
 
