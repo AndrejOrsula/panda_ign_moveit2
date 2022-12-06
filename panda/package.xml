@@ -3,7 +3,7 @@
   <name>panda</name>
   <version>1.0.0</version>
   <description>Metapackage for Franka Emika Panda</description>
-  <maintainer email="andrejorsula@uni.lu">Andrej Orsula</maintainer>
+  <maintainer email="orsula.andrej@gmail.com">Andrej Orsula</maintainer>
   <author>Andrej Orsula</author>
   <license>BSD</license>
 
