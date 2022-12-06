@@ -22,7 +22,7 @@ joint_trajectory_controller:
       - panda_joint6
       - panda_joint7
     command_interfaces:
-      - effort
+      - velocity
     state_interfaces:
       - position
       - velocity
@@ -69,7 +69,7 @@ gripper_trajectory_controller:
       - panda_finger_joint1
       - panda_finger_joint2
     command_interfaces:
-      - effort
+      - velocity
     state_interfaces:
       - position
       - velocity
