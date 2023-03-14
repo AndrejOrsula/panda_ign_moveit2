@@ -21,7 +21,6 @@ from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
-
     # Declare all launch arguments
     declared_arguments = generate_declared_arguments()
 

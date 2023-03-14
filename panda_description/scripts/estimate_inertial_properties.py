@@ -12,7 +12,6 @@ from pcg_gazebo.parsers.sdf import SDF, create_sdf_element
 
 
 def main():
-
     # Total mass taken from datasheet (given as ~18.0kg)
     # You can also use your own estimate of total mass if you managed to weigh Panda yourself :)
     total_mass = 18.0
