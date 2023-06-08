@@ -38,8 +38,8 @@
 
   <!-- Flag to enable ros2 controllers for manipulator -->
   <xacro:arg name="ros2_control" default="true"/>
-  <!-- The ros2_control plugin that should be loaded for the manipulator ('fake', 'ign', 'real' or custom) -->
-  <xacro:arg name="ros2_control_plugin" default="ign"/>
+  <!-- The ros2_control plugin that should be loaded for the manipulator ('fake', 'gz', 'real' or custom) -->
+  <xacro:arg name="ros2_control_plugin" default="gz"/>
   <!-- The output control command interface provided by ros2_control ('position', 'velocity', 'effort' or certain combinations 'position,velocity') -->
   <xacro:arg name="ros2_control_command_interface" default="effort"/>
   <!-- The filepath to parameters of ROS 2 controllers -->
@@ -109,7 +109,7 @@
 
   <!-- Gazebo - ROS 2 control (Ignition) -->
   <xacro:if value="$(arg ros2_control)">
-    <xacro:if value="${'ign' in '$(arg ros2_control_plugin)'}">
+    <xacro:if value="${'gz' in '$(arg ros2_control_plugin)'}">
       <xacro:ign_ros2_control controller_parameters="$(arg ros2_controller_parameters)"/>
     </xacro:if>
   </xacro:if>

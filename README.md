@@ -8,7 +8,7 @@ Software packages for Franka Emika Panda that enable manipulation with MoveIt 2 
 
 ## Overview
 
-This branch targets ROS 2 `galactic` and Gazebo `fortress`.
+This branch targets ROS 2 `humble` and Gazebo `fortress`.
 
 Below is an overview of the included packages, with a short description of their purpose. For more information, please see README.md of each individual package.
 
@@ -22,7 +22,7 @@ Below is an overview of the included packages, with a short description of their
 
 These are the primary dependencies required to use this project.
 
-- ROS 2 [Galactic](https://docs.ros.org/en/galactic/Installation.html)
+- ROS 2 [Humble](https://docs.ros.org/en/humble/Installation.html)
 - Gazebo [Fortress](https://gazebosim.org/docs/fortress)
 
 All additional dependencies are either pulled via [vcstool](https://wiki.ros.org/vcstool) ([panda_ign_moveit2.repos](./panda_ign_moveit2.repos)) or installed via [rosdep](https://wiki.ros.org/rosdep) during the building process below.

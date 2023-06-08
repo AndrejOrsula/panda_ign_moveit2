@@ -20,5 +20,8 @@ execute_process(
   COMMAND ${${PROJECT_NAME}_MOVEIT_CONFIG_SCRIPTS_DIR}/xacro2srdf.bash
 )
 
+# Install directories
+install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
+
 # Setup the project
 ament_package()

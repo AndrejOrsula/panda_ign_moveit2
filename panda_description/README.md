@@ -22,10 +22,10 @@ ros2 launch panda_description view.launch.py
 
 For SDF, please use the included [xacro2sdf.bash](./scripts/xacro2sdf.bash) script with the desired arguments. This script makes sure that a correct relative path is used to locate all assets.
 
-To visualise SDF with Gazebo, included [view_ign.launch.py](./launch/view_ign.launch.py) script can be used.
+To visualise SDF with Gazebo, included [view_gz.launch.py](./launch/view_gz.launch.py) script can be used.
 
 ```bash
-ros2 launch panda_description view_ign.launch.py
+ros2 launch panda_description view_gz.launch.py
 ```
 
 #### Fuel
@@ -51,7 +51,7 @@ The following directory structure is utilised for this package because it provid
 ├── config/initial_joint_positions.yaml # List of initial joint positions for fake and simulated ROS 2 control
 ├── launch/                             # [dir] ROS 2 launch scripts
     ├── view.launch.py                  # Launch script for visualising URDF with RViz2
-    └── view_ign.launch.py              # Launch script for visualising SDF with Gazebo
+    └── view_gz.launch.py               # Launch script for visualising SDF with Gazebo
 ├── panda/                              # [dir] Model directory compatible with Fuel
     ├── meshes/                         # [dir] Meshes for both URDF and SDF
         ├── **/collision/*.stl          # STL meshes for collision geometry

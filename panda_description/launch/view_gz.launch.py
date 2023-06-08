@@ -1,14 +1,18 @@
 #!/usr/bin/env -S ros2 launch
-"""Example of planning with MoveIt2 and executing motions using fake ROS 2 controllers within RViz2"""
+"""Visualisation of SDF model for panda in Ignition Gazebo. Note that the generated model://panda/model.sdf descriptor is used."""
 
 from os import path
 from typing import List
 
-from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+from launch.substitutions import (
+    Command,
+    FindExecutable,
+    LaunchConfiguration,
+    PathJoinSubstitution,
+)
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
@@ -18,12 +22,28 @@ def generate_launch_description() -> LaunchDescription:
     declared_arguments = generate_declared_arguments()
 
     # Get substitution for all arguments
+    description_package = LaunchConfiguration("description_package")
+    description_filepath = LaunchConfiguration("description_filepath")
     world = LaunchConfiguration("world")
     model = LaunchConfiguration("model")
-    rviz_config = LaunchConfiguration("rviz_config")
     use_sim_time = LaunchConfiguration("use_sim_time")
     ign_verbosity = LaunchConfiguration("ign_verbosity")
     log_level = LaunchConfiguration("log_level")
+
+    # URDF
+    _robot_description_xml = Command(
+        [
+            PathJoinSubstitution([FindExecutable(name="xacro")]),
+            " ",
+            PathJoinSubstitution(
+                [FindPackageShare(description_package), description_filepath]
+            ),
+            " ",
+            "name:=",
+            model,
+        ]
+    )
+    robot_description = {"robot_description": _robot_description_xml}
 
     # List of included launch descriptions
     launch_descriptions = [
@@ -32,58 +52,39 @@ def generate_launch_description() -> LaunchDescription:
             PythonLaunchDescriptionSource(
                 PathJoinSubstitution(
                     [
-                        FindPackageShare("ros_ign_gazebo"),
+                        FindPackageShare("ros_gz_sim"),
                         "launch",
-                        "ign_gazebo.launch.py",
+                        "gz_sim.launch.py",
                     ]
                 )
             ),
-            launch_arguments=[("ign_args", [world, " -r -v ", ign_verbosity])],
-        ),
-        # Launch move_group of MoveIt 2
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(
-                PathJoinSubstitution(
-                    [
-                        FindPackageShare("panda_moveit_config"),
-                        "launch",
-                        "move_group.launch.py",
-                    ]
-                )
-            ),
-            launch_arguments=[
-                ("ros2_control_plugin", "ign"),
-                ("ros2_control_command_interface", "effort"),
-                # TODO: Re-enable colligion geometry for manipulator arm once spawning with specific joint configuration is enabled
-                ("collision_arm", "false"),
-                ("rviz_config", rviz_config),
-                ("use_sim_time", use_sim_time),
-                ("log_level", log_level),
-            ],
+            launch_arguments=[("gz_args", [world, " -v ", ign_verbosity])],
         ),
     ]
 
     # List of nodes to be launched
     nodes = [
-        # ros_ign_gazebo_create
+        # robot_state_publisher
         Node(
-            package="ros_ign_gazebo",
+            package="robot_state_publisher",
+            executable="robot_state_publisher",
+            output="log",
+            arguments=["--ros-args", "--log-level", log_level],
+            parameters=[
+                robot_description,
+                {
+                    "publish_frequency": 50.0,
+                    "frame_prefix": "",
+                    "use_sim_time": use_sim_time,
+                },
+            ],
+        ),
+        # ros_gz_sim_create
+        Node(
+            package="ros_gz_sim",
             executable="create",
             output="log",
             arguments=["-file", model, "--ros-args", "--log-level", log_level],
-            parameters=[{"use_sim_time": use_sim_time}],
-        ),
-        # ros_ign_bridge (clock -> ROS 2)
-        Node(
-            package="ros_ign_bridge",
-            executable="parameter_bridge",
-            output="log",
-            arguments=[
-                "/clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock",
-                "--ros-args",
-                "--log-level",
-                log_level,
-            ],
             parameters=[{"use_sim_time": use_sim_time}],
         ),
     ]
@@ -97,6 +98,17 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
     """
 
     return [
+        # Locations of robot resources
+        DeclareLaunchArgument(
+            "description_package",
+            default_value="panda_description",
+            description="Custom package with robot description.",
+        ),
+        DeclareLaunchArgument(
+            "description_filepath",
+            default_value=path.join("urdf", "panda.urdf.xacro"),
+            description="Path to xacro or URDF description of the robot, relative to share of `description_package`.",
+        ),
         # World and model for Ignition Gazebo
         DeclareLaunchArgument(
             "world",
@@ -109,15 +121,6 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
             description="Name or filepath of model to load.",
         ),
         # Miscellaneous
-        DeclareLaunchArgument(
-            "rviz_config",
-            default_value=path.join(
-                get_package_share_directory("panda_moveit_config"),
-                "rviz",
-                "moveit.rviz",
-            ),
-            description="Path to configuration for RViz2.",
-        ),
         DeclareLaunchArgument(
             "use_sim_time",
             default_value="true",
