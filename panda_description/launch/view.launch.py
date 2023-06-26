@@ -90,7 +90,7 @@ def generate_launch_description() -> LaunchDescription:
             " ",
             "gazebo_preserve_fixed_joint:=",
             gazebo_preserve_fixed_joint,
-        ]
+        ],on_stderr='warn'
     )
     robot_description = {"robot_description": robot_description_content}
 

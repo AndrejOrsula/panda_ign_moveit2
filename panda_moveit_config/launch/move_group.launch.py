@@ -96,7 +96,7 @@ def generate_launch_description():
             " ",
             "gazebo_preserve_fixed_joint:=",
             gazebo_preserve_fixed_joint,
-        ]
+        ],on_stderr='warn'
     )
     robot_description = {"robot_description": _robot_description_xml}
 
@@ -118,7 +118,7 @@ def generate_launch_description():
             " ",
             "prefix:=",
             prefix,
-        ]
+        ],on_stderr='warn'
     )
     robot_description_semantic = {
         "robot_description_semantic": _robot_description_semantic_xml

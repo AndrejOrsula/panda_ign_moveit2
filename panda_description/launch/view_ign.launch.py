@@ -41,7 +41,7 @@ def generate_launch_description() -> LaunchDescription:
             " ",
             "name:=",
             model,
-        ]
+        ],on_stderr='warn'
     )
     robot_description = {"robot_description": _robot_description_xml}
 
