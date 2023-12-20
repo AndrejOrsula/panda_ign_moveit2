@@ -18,7 +18,7 @@
    command_interface:=effort
    initial_positions_file:=${default_initial_positions_file}
   ">
-    <xacro:property name="initial_positions" value="${load_yaml(initial_positions_file)['initial_joint_positions']['panda_arm']}"/>
+    <xacro:property name="initial_positions" value="${xacro.load_yaml(initial_positions_file)['initial_joint_positions']['panda_arm']}"/>
 
     <ros2_control name="${name}" type="system">
       <hardware>
@@ -155,7 +155,7 @@
    initial_positions_file:=${default_initial_positions_file}
    mimic_joints:=false
   ">
-    <xacro:property name="initial_positions" value="${load_yaml(initial_positions_file)['initial_joint_positions']['panda_gripper']}"/>
+    <xacro:property name="initial_positions" value="${xacro.load_yaml(initial_positions_file)['initial_joint_positions']['panda_gripper']}"/>
 
     <ros2_control name="${name}" type="system">
       <hardware>
