@@ -29,7 +29,7 @@ if [ "${#}" -gt "0" ]; then
 fi
 
 ## GPU
-LS_HW_DISPLAY=$(lshw -C display 2> /dev/null | grep vendor)
+LS_HW_DISPLAY=$(lshw -C display 2>/dev/null | grep vendor)
 if [[ ${LS_HW_DISPLAY^^} =~ NVIDIA ]]; then
     # Enable GPU either via NVIDIA Container Toolkit or NVIDIA Docker (depending on Docker version)
     if dpkg --compare-versions "$(docker version --format '{{.Server.Version}}')" gt "19.3"; then
@@ -115,7 +115,7 @@ DOCKER_RUN_CMD=(
     "${CMD}"
 )
 
-echo -e "\033[1;30m${DOCKER_RUN_CMD[*]}\033[0m" | xargs
+echo -e "\033[1;90m${DOCKER_RUN_CMD[*]}\033[0m" | xargs
 
 # shellcheck disable=SC2048
 exec ${DOCKER_RUN_CMD[*]}
