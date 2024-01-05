@@ -124,6 +124,8 @@ planner_configs:
     type: geometric::TrajOpt
 
 arm:
+  enforce_constrained_state_space: true
+  projection_evaluator: joints(panda_joint1,panda_joint2)
   planner_configs:
     - SBLkConfigDefault
     - ESTkConfigDefault
